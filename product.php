@@ -39,6 +39,49 @@ if (!$product) {
 <?php 
     exit; 
 }
+
+// Fetch related products
+$categoryId = $product['category_id'] ? (int)$product['category_id'] : 0;
+$productId = (int)$product['id'];
+
+$relatedProducts = [];
+if ($categoryId > 0) {
+    $relatedStmt = $pdo->prepare("
+        SELECT p.*, c.name AS category_name
+        FROM products p
+        LEFT JOIN categories c ON c.id = p.category_id
+        WHERE p.category_id = ? AND p.id != ?
+        LIMIT 4
+    ");
+    $relatedStmt->execute([$categoryId, $productId]);
+    $relatedProducts = $relatedStmt->fetchAll();
+}
+
+if (count($relatedProducts) < 4) {
+    $excludeIds = [$productId];
+    foreach ($relatedProducts as $rp) {
+        $excludeIds[] = (int)$rp['id'];
+    }
+    $placeholders = implode(',', array_fill(0, count($excludeIds), '?'));
+    $backfillLimit = 4 - count($relatedProducts);
+    
+    // In case the DB has fewer total products than the backfill limit, check total products count
+    $totalCount = (int)$pdo->query("SELECT COUNT(*) FROM products")->fetchColumn();
+    $actualLimit = min($backfillLimit, max(0, $totalCount - count($excludeIds)));
+    
+    if ($actualLimit > 0) {
+        $backfillStmt = $pdo->prepare("
+            SELECT p.*, c.name AS category_name
+            FROM products p
+            LEFT JOIN categories c ON c.id = p.category_id
+            WHERE p.id NOT IN ($placeholders)
+            LIMIT $actualLimit
+        ");
+        $backfillStmt->execute($excludeIds);
+        $backfillProducts = $backfillStmt->fetchAll();
+        $relatedProducts = array_merge($relatedProducts, $backfillProducts);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -394,6 +437,66 @@ if (!$product) {
             </div>
         </div>
     </section>
+
+    <?php if (!empty($relatedProducts)): ?>
+    <!-- Related Products Section -->
+    <section class="py-16 md:py-24 bg-white border-t border-slate-200/60">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="text-teal-500 font-black tracking-widest uppercase text-xs mb-3">Therapeutic Alternatives</h3>
+                <h2 class="text-3xl md:text-5xl font-black text-slate-800 italic">Related <span class="text-blue-600">Products</span></h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto rounded mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <?php foreach ($relatedProducts as $rp): ?>
+                <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="h-56 overflow-hidden relative bg-slate-100/50">
+                            <?php if ($rp['image']): ?>
+                            <img src="<?= htmlspecialchars($rp['image']) ?>" alt="<?= htmlspecialchars($rp['name']) ?>"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <?php else: ?>
+                            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center">
+                                <span style="font-size:3rem;">💊</span>
+                            </div>
+                            <?php endif; ?>
+                            <?php if ($rp['badge']): ?>
+                            <div class="absolute top-4 right-4 bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                                <?= htmlspecialchars($rp['badge']) ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php if ($rp['category_name']): ?>
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow">
+                                <?= htmlspecialchars($rp['category_name']) ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-black text-slate-800 mb-2 group-hover:text-blue-600 transition-colors italic line-clamp-1">
+                                <?= htmlspecialchars($rp['name']) ?>
+                            </h4>
+                            <?php if ($rp['composition']): ?>
+                            <p class="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2">
+                                <?= htmlspecialchars(substr($rp['composition'], 0, 75)) . (strlen($rp['composition']) > 75 ? '...' : '') ?>
+                            </p>
+                            <?php else: ?>
+                            <p class="text-slate-500 text-xs leading-relaxed mb-6">High-quality pharmaceutical product by MaasCure.</p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="product.php?slug=<?= urlencode($rp['slug']) ?>"
+                            class="block w-full py-3.5 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-[10px] tracking-widest text-center">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
 
 
         <!-- Footer Placeholder -->
