@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Masscure Pharmaceutical Private Limited</title>
+    <title>Contact Us | MaasCure Pharmaceutical Private Limited</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -12,7 +12,7 @@
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-brand">
-            Masscure
+            MaasCure
         </div>
         <div class="capsule-loader">
             <div class="capsule-half-1"></div>
@@ -160,7 +160,7 @@
         <!-- Floating Location Info -->
         <div class="hidden lg:block absolute top-16 left-16 z-10 bg-white/95 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.15)] border border-white/50 max-w-md reveal">
             <span class="text-teal-500 font-black tracking-widest uppercase text-xs mb-4 block">Our Headquarters</span>
-            <h3 class="text-3xl font-black text-slate-800 mb-6 leading-tight italic">Visit the Heart of Masscure</h3>
+            <h3 class="text-3xl font-black text-slate-800 mb-6 leading-tight italic">Visit the Heart of MaasCure</h3>
             <p class="text-slate-500 text-lg mb-8 leading-relaxed">
                 Experience pharmaceutical innovation firsthand at our state-of-the-art office.
             </p>
@@ -185,6 +185,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const enquiryForm = document.getElementById('enquiry-form');
             const successMsg = document.getElementById('success-msg');
+            
+            // Pre-fill message if product query parameter is present
+            const urlParams = new URLSearchParams(window.location.search);
+            const productParam = urlParams.get('product');
+            if (productParam && enquiryForm) {
+                const messageField = document.getElementById('message');
+                if (messageField) {
+                    messageField.value = `Hello, I would like to inquire about the product: "${productParam}". Please send me catalog, pricing, and availability details.`;
+                }
+            }
+
             if (enquiryForm) {
                 enquiryForm.addEventListener('submit', (e) => {
                     e.preventDefault();

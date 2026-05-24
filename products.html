@@ -3,140 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products | Masscure Pharmaceutical Private Limited</title>
+    <meta http-equiv="refresh" content="0; url=products.php">
+    <title>Redirecting... | MaasCure Pharmaceutical</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript">
+        window.location.replace("products.php" + window.location.search);
+    </script>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden pt-20">
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-brand">
-            Masscure<span>.</span>
-        </div>
-        <div class="capsule-loader">
-            <div class="capsule-half-1"></div>
-            <div class="capsule-half-2"></div>
-        </div>
+<body class="bg-slate-50 text-slate-900 flex items-center justify-center min-h-screen">
+    <div class="text-center p-8 bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-slate-100 max-w-sm w-full mx-4">
+        <div class="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+        <h3 class="text-xl font-black text-slate-800 mb-2">Redirecting</h3>
+        <p class="text-slate-500 text-sm mb-6">We are taking you to our dynamic products catalog...</p>
+        <p class="text-xs text-slate-400">If you are not redirected, <a href="products.php" class="text-blue-600 font-bold hover:underline">click here</a>.</p>
     </div>
-
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
-
-    <!-- Page Hero -->
-    <section class="relative min-h-[60vh] flex items-center justify-center text-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="assets/products_hero.png" alt="Our Products Hero" class="w-full h-full object-cover scale-110">
-            <!-- Multi-layer overlay -->
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/60 to-slate-900/40"></div>
-            <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
-        </div>
-        
-        <div class="relative z-10 container mx-auto px-6 pt-12 pb-48">
-            <span class="inline-block px-4 py-1.5 mb-6 bg-blue-500/20 backdrop-blur-md border border-white/10 rounded-full text-blue-200 text-xs font-bold tracking-widest uppercase animate-fade-in">
-                Medical Portfolio
-            </span>
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight italic">
-                Our <span class="text-green-400">Products</span>
-            </h1>
-            <p class="text-xl text-blue-100 max-w-2xl mx-auto font-medium leading-relaxed">
-                Explore our comprehensive range of high-quality pharmaceutical solutions, crafted with precision and care.
-            </p>
-        </div>
-    </section>
-
-    <!-- Products Grid Overlapping Box -->
-    <section class="relative z-20 -mt-32 pb-24">
-        <div class="container mx-auto px-6">
-            <div class="bg-white rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] p-8 md:p-16 lg:p-20 border border-slate-100">
-                
-                <div class="text-center mb-16">
-                    <h3 class="text-teal-500 font-black tracking-widest uppercase text-xs mb-4">Precision Medicine</h3>
-                    <h2 class="text-3xl md:text-5xl font-black text-slate-800 italic">Quality You Can <span class="text-blue-600">Trust</span></h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Product Card 1 -->
-                    <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="assets/product_1.png" alt="MassCure Tab" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute top-4 right-4 bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Best Seller</div>
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors italic">MassCure Advance Tablets</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8">High-efficacy formula for rapid relief and sustained healthcare management.</p>
-                            <button class="w-full py-4 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-xs tracking-widest">View Details</button>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 2 -->
-                    <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="assets/product_2.png" alt="Vital Relief Syrup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors italic">Vital Relief Syrup</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8">Gentle and effective syrup for pediatric and adult respiratory support.</p>
-                            <button class="w-full py-4 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-xs tracking-widest">View Details</button>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 3 -->
-                    <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="assets/product_3.png" alt="NeuroCap Plus" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors italic">NeuroCap Plus Capsules</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8">Enriched with vitamins and minerals to support cognitive health and vitality.</p>
-                            <button class="w-full py-4 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-xs tracking-widest">View Details</button>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 4 -->
-                    <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="assets/product_4.png" alt="Inhalo-Fresh Spray" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors italic">Inhalo-Fresh Spray</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8">Fast-acting nasal spray for immediate relief from seasonal congestion.</p>
-                            <button class="w-full py-4 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-xs tracking-widest">View Details</button>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 5 -->
-                    <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="assets/product_5.png" alt="Z-Vial Injectables" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors italic">Z-Vial Injectables</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8">Hospital-grade injectables for critical care and metabolic support.</p>
-                            <button class="w-full py-4 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-xs tracking-widest">View Details</button>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 6 -->
-                    <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="assets/product_6.png" alt="DermoHeal Ointment" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors italic">DermoHeal Ointment</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8">Advanced dermatological care for various skin conditions and healing.</p>
-                            <button class="w-full py-4 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-xs tracking-widest">View Details</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
-
-    <script src="js/main.js"></script>
 </body>
 </html>
