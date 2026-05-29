@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden pt-20">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-brand">
@@ -32,11 +32,11 @@
             <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
         </div>
         
-        <div class="relative z-10 container mx-auto px-6 pt-12 pb-48">
+        <div class="relative z-10 container mx-auto px-6 pt-32 pb-36 md:pb-48">
             <span class="inline-block px-4 py-1.5 mb-6 bg-blue-500/20 backdrop-blur-md border border-white/10 rounded-full text-blue-200 text-xs font-bold tracking-widest uppercase animate-fade-in">
                 Our Purpose
             </span>
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight italic">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tight italic">
                 Vision & <span class="text-green-400">Mission</span>
             </h1>
             <p class="text-xl text-blue-100 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -46,13 +46,13 @@
     </section>
 
     <!-- Content Overlapping Box -->
-    <section class="relative z-20 -mt-32 pb-24">
+    <section class="relative z-20 -mt-20 md:-mt-32 pb-16 md:pb-24">
         <div class="container mx-auto px-6">
-            <div class="bg-white rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] p-8 md:p-16 lg:p-24 border border-slate-100">
+            <div class="bg-white rounded-3xl md:rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] p-6 sm:p-12 md:p-16 lg:p-24 border border-slate-100">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                     <!-- Vision Card -->
-                    <div class="relative group p-10 md:p-12 rounded-[2.5rem] bg-slate-50 hover:bg-white hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-slate-100">
+                    <div class="relative group p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[2.5rem] bg-slate-50 hover:bg-white hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-slate-100">
                         <div class="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center mb-10 shadow-xl shadow-blue-600/20 transform group-hover:rotate-6 transition-transform">
                             <svg xmlns="http://www.w3.org/2003/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -72,7 +72,7 @@
                     </div>
 
                     <!-- Mission Card -->
-                    <div class="relative group p-10 md:p-12 rounded-[2.5rem] bg-slate-50 hover:bg-white hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-slate-100">
+                    <div class="relative group p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[2.5rem] bg-slate-50 hover:bg-white hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-slate-100">
                         <div class="w-20 h-20 bg-green-500 rounded-3xl flex items-center justify-center mb-10 shadow-xl shadow-green-500/20 transform group-hover:-rotate-6 transition-transform">
                             <svg xmlns="http://www.w3.org/2003/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -89,6 +89,20 @@
                         <!-- Decoration -->
                         <div class="absolute top-8 right-8 text-green-500/5 font-black text-8xl pointer-events-none select-none">02</div>
                     </div>
+                </div>
+
+                <!-- Tagline Highlight Banner -->
+                <div class="mt-16 bg-gradient-to-r from-blue-600/5 via-emerald-500/5 to-blue-600/5 border border-slate-100 rounded-3xl p-6 sm:p-10 md:p-12 text-center max-w-4xl mx-auto shadow-sm">
+                    <span class="inline-block px-4 py-1.5 mb-4 bg-teal-50 border border-teal-100 text-teal-700 text-xs font-bold tracking-widest uppercase rounded-full">
+                        Corporate Tagline
+                    </span>
+                    <h3 class="text-3xl md:text-5xl font-black text-slate-800 leading-tight italic tracking-wide mb-6">
+                        "Care <span class="text-blue-600">Beyond</span> Cure"
+                    </h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-green-500 mx-auto rounded-full mb-6"></div>
+                    <p class="text-slate-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
+                        At MaasCure, we believe that healthcare is not just about treating illnesses—it is about restoring quality of life, spreading hope, and providing comprehensive wellness and compassionate care that extends far beyond medical prescriptions.
+                    </p>
                 </div>
 
                 <!-- Values Bar -->

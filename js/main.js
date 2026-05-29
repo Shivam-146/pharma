@@ -2,17 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // 0. Preloader Logic
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                document.body.classList.add('fade-in');
-            }, 800); // Small delay to show off the animation
-        });
+        let preloaderHidden = false;
+        const hidePreloader = () => {
+            if (preloaderHidden) return;
+            preloaderHidden = true;
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            document.body.classList.add('fade-in');
+        };
+
+        // Hide when the window is fully loaded
+        window.addEventListener('load', hidePreloader);
+
+        // Fallback: hide after 800ms if assets (like the background video) take too long
+        setTimeout(hidePreloader, 800);
     }
 
     // 1. Load Header
-    fetch('components/header.html')
+    fetch('components/header.html?v=1.0.1')
         .then(response => response.text())
         .then(data => {
             const headerPlaceholder = document.getElementById('header-placeholder');
@@ -23,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // 2. Load Footer
-    fetch('components/footer.html')
+    fetch('components/footer.html?v=1.0.1')
         .then(response => response.text())
         .then(data => {
             const footerPlaceholder = document.getElementById('footer-placeholder');
@@ -64,7 +71,8 @@ function initNavbar() {
     const highlightLinks = (links) => {
         links.forEach(link => {
             link.classList.remove('nav-link-active', 'text-blue-600', 'font-bold');
-            if (link.getAttribute('href') === currentPage) {
+            const href = link.getAttribute('href');
+            if (href === currentPage || (currentPage === 'product.php' && href === 'products.php')) {
                 link.classList.add('nav-link-active');
             }
         });
@@ -80,54 +88,44 @@ function initNavbar() {
         });
     }
 
-    // Scroll Effect (only if on Home page and at top)
+    // Scroll Effect (applies to all pages)
     const handleScroll = () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('bg-white', 'shadow-xl', 'py-3');
-            navbar.classList.remove('bg-transparent', 'py-4', 'text-white');
-            if (navLogoText) navLogoText.classList.add('text-slate-900');
-            if (navLogoText) navLogoText.classList.remove('text-white');
-            if (mobileMenuBtn) mobileMenuBtn.classList.add('text-slate-900');
-            if (mobileMenuBtn) mobileMenuBtn.classList.remove('text-white');
-            
-            navLinks.forEach(link => {
-                if (!link.classList.contains('nav-link-active')) {
-                    link.classList.add('text-slate-600');
-                    link.classList.remove('text-white');
-                }
-            });
-        } else if (isHomePage) {
-            navbar.classList.remove('bg-white', 'shadow-xl', 'py-3');
-            navbar.classList.add('bg-transparent', 'py-4', 'text-white');
-            if (navLogoText) navLogoText.classList.remove('text-slate-900');
-            if (navLogoText) navLogoText.classList.add('text-white');
-            if (mobileMenuBtn) mobileMenuBtn.classList.remove('text-slate-900');
-            if (mobileMenuBtn) mobileMenuBtn.classList.add('text-white');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-xl', 'py-3');
+                navbar.classList.remove('bg-transparent', 'py-4', 'text-white');
+                if (navLogoText) navLogoText.classList.add('text-slate-900');
+                if (navLogoText) navLogoText.classList.remove('text-white');
+                if (mobileMenuBtn) mobileMenuBtn.classList.add('text-slate-900');
+                if (mobileMenuBtn) mobileMenuBtn.classList.remove('text-white');
+                
+                navLinks.forEach(link => {
+                    if (!link.classList.contains('nav-link-active')) {
+                        link.classList.add('text-slate-600');
+                        link.classList.remove('text-white');
+                    }
+                });
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-xl', 'py-3');
+                navbar.classList.add('bg-transparent', 'py-4', 'text-white');
+                if (navLogoText) navLogoText.classList.remove('text-slate-900');
+                if (navLogoText) navLogoText.classList.add('text-white');
+                if (mobileMenuBtn) mobileMenuBtn.classList.remove('text-slate-900');
+                if (mobileMenuBtn) mobileMenuBtn.classList.add('text-white');
 
-            navLinks.forEach(link => {
-                if (!link.classList.contains('nav-link-active')) {
-                    link.classList.add('text-white');
-                    link.classList.remove('text-slate-600');
-                }
-            });
+                navLinks.forEach(link => {
+                    if (!link.classList.contains('nav-link-active')) {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-slate-600');
+                    }
+                });
+            }
         }
     };
 
-    // Set initial state for subpages
-    if (!isHomePage) {
-        navbar.classList.add('bg-white', 'shadow-xl', 'py-3');
-        if (navLogoText) navLogoText.classList.add('text-slate-900');
-        if (mobileMenuBtn) mobileMenuBtn.classList.add('text-slate-900');
-        navLinks.forEach(link => {
-            if (!link.classList.contains('nav-link-active')) {
-                link.classList.add('text-slate-600');
-            }
-        });
-    } else {
-        // Initial check for home page if starting with scroll
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-    }
+    // Initial check and scroll event listener for all pages
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
 }
 
 // Sheryians-style letter hover effect

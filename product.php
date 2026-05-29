@@ -99,7 +99,7 @@ if (count($relatedProducts) < 4) {
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden pt-20">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
     <!-- Preloader -->
     <div id="preloader">
@@ -114,13 +114,17 @@ if (count($relatedProducts) < 4) {
     <div id="header-placeholder"></div>
 
     <!-- Page Hero / Breadcrumbs -->
-    <section class="bg-gradient-to-r from-blue-950 via-blue-900 to-slate-950 text-white py-12 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-5"
-            style="background-image: url('assets/products_hero.png'); background-size: cover; background-position: center;">
+    <section class="relative min-h-[50vh] flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/products_hero.png" alt="Product Specification Hero" class="w-full h-full object-cover scale-110">
+            <!-- Multi-layer overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/60 to-slate-900/40"></div>
+            <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
         </div>
-        <div class="container mx-auto px-6 relative z-10">
+        
+        <div class="relative z-10 container mx-auto px-6 pt-32 pb-16 flex flex-col items-center">
             <!-- Breadcrumbs -->
-            <nav class="flex items-center space-x-2 text-xs font-semibold text-slate-300 uppercase tracking-widest mb-4">
+            <nav class="flex items-center justify-center space-x-2 text-xs font-semibold text-slate-300 uppercase tracking-widest mb-6">
                 <a href="index.html" class="hover:text-green-400 transition-colors">Home</a>
                 <span class="text-slate-500">/</span>
                 <a href="products.php" class="hover:text-green-400 transition-colors">Products</a>
@@ -132,7 +136,7 @@ if (count($relatedProducts) < 4) {
                 <span class="text-white"><?= htmlspecialchars($product['name']) ?></span>
             </nav>
             
-            <h1 class="text-3xl md:text-5xl font-black italic tracking-tight">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-black text-white italic tracking-tight leading-none">
                 Product <span class="text-green-400">Specification</span>
             </h1>
         </div>
@@ -147,7 +151,7 @@ if (count($relatedProducts) < 4) {
                 
                 <!-- Left Column: Gallery (7 Columns) -->
                 <div class="lg:col-span-7">
-                    <div class="bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50">
+                    <div class="bg-white rounded-3xl md:rounded-[2.5rem] p-4 sm:p-6 border border-slate-100 shadow-xl shadow-slate-100/50">
                         <!-- Gallery Thumbnails & Main Image Preparation -->
                         <?php
                         $additionalImages = [];
@@ -203,7 +207,7 @@ if (count($relatedProducts) < 4) {
 
                 <!-- Right Column: Primary Details Card (5 Columns) -->
                 <div class="lg:col-span-5">
-                    <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-slate-100 shadow-xl shadow-slate-100/50 space-y-6">
+                    <div class="bg-white rounded-3xl md:rounded-[2.5rem] p-6 sm:p-8 md:p-10 border border-slate-100 shadow-xl shadow-slate-100/50 space-y-6">
                         <div>
                             <?php if ($product['category_name']): ?>
                                 <span class="inline-block px-4 py-1.5 mb-3 bg-teal-50 text-teal-700 border border-teal-100 rounded-full text-xs font-black uppercase tracking-wider">
@@ -282,7 +286,7 @@ if (count($relatedProducts) < 4) {
                 
                 <!-- Left Column: Specs Tabs (7 Columns) -->
                 <div class="lg:col-span-7 space-y-8">
-                    <div class="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-8 md:p-10">
+                    <div class="bg-white rounded-3xl md:rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-6 sm:p-8 md:p-10">
                         <div class="flex border-b border-slate-100 mb-8 overflow-x-auto" id="productTabs" role="tablist">
                             <!-- Tab 1: Overview -->
                             <button class="tab-btn active py-4 px-6 font-bold text-xs uppercase tracking-wider text-blue-600 border-b-2 border-blue-600 transition-all focus:outline-none flex items-center gap-2 whitespace-nowrap" 
@@ -380,7 +384,7 @@ if (count($relatedProducts) < 4) {
 
                 <!-- Right Column: Quick Inquiry Sidebar Form (5 Columns) -->
                 <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-6 md:p-8 space-y-6">
+                    <div class="bg-white rounded-3xl md:rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-6 sm:p-8 space-y-6">
                         <div>
                             <h3 class="text-xl font-black text-slate-800 italic">Quick <span class="text-blue-600">Inquiry</span></h3>
                             <p class="text-slate-400 text-[10px] font-bold leading-relaxed mt-1">Get immediate pricing, availability, and ordering documentation.</p>
@@ -448,47 +452,61 @@ if (count($relatedProducts) < 4) {
                 <div class="w-16 h-1 bg-blue-600 mx-auto rounded mt-4"></div>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <?php foreach ($relatedProducts as $rp): ?>
-                <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100 flex flex-col justify-between">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <?php foreach ($relatedProducts as $idx => $rp): ?>
+                <div class="reveal group bg-white rounded-2xl overflow-hidden hover:shadow-[0_15px_45px_rgba(37,99,235,0.07)] border border-slate-100 hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between h-full" style="transition-delay: <?= ($idx % 4) * 100 ?>ms;">
                     <div>
-                        <div class="h-56 overflow-hidden relative bg-slate-100/50">
+                        <!-- Image Container with Padding and Light Grey Background -->
+                        <div class="w-full aspect-[4/3] bg-slate-50/50 flex items-center justify-center p-5 relative overflow-hidden border-b border-slate-100/60">
                             <?php if ($rp['image']): ?>
                             <img src="<?= htmlspecialchars($rp['image']) ?>" alt="<?= htmlspecialchars($rp['name']) ?>"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105">
                             <?php else: ?>
-                            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center">
+                            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center rounded-xl">
                                 <span style="font-size:3rem;">💊</span>
                             </div>
                             <?php endif; ?>
+                            
                             <?php if ($rp['badge']): ?>
-                            <div class="absolute top-4 right-4 bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                            <div class="absolute top-4 right-4 bg-blue-600 text-white text-[9px] font-extrabold px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
                                 <?= htmlspecialchars($rp['badge']) ?>
                             </div>
                             <?php endif; ?>
-                            <?php if ($rp['category_name']): ?>
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow">
-                                <?= htmlspecialchars($rp['category_name']) ?>
-                            </div>
-                            <?php endif; ?>
                         </div>
-                        <div class="p-6">
-                            <h4 class="text-lg font-black text-slate-800 mb-2 group-hover:text-blue-600 transition-colors italic line-clamp-1">
+
+                        <!-- Card Body -->
+                        <div class="pt-5 px-5 pb-3">
+                            <?php if ($rp['category_name']): ?>
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1.5 block">
+                                <?= htmlspecialchars($rp['category_name']) ?>
+                            </span>
+                            <?php endif; ?>
+                            
+                            <h4 class="text-base font-bold text-slate-800 mb-2.5 group-hover:text-blue-600 transition-colors line-clamp-1">
                                 <?= htmlspecialchars($rp['name']) ?>
                             </h4>
+                            
                             <?php if ($rp['composition']): ?>
-                            <p class="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2">
-                                <?= htmlspecialchars(substr($rp['composition'], 0, 75)) . (strlen($rp['composition']) > 75 ? '...' : '') ?>
-                            </p>
+                            <div class="space-y-0.5">
+                                <span class="text-[9px] font-semibold text-slate-400 uppercase tracking-widest block">Composition</span>
+                                <p class="text-slate-500 text-xs font-medium leading-relaxed line-clamp-2">
+                                    <?= htmlspecialchars(substr($rp['composition'], 0, 75)) . (strlen($rp['composition']) > 75 ? '...' : '') ?>
+                                </p>
+                            </div>
                             <?php else: ?>
-                            <p class="text-slate-500 text-xs leading-relaxed mb-6">High-quality pharmaceutical product by MaasCure.</p>
+                            <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">High-quality pharmaceutical solution.</p>
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
+
+                    <!-- CTA Section -->
+                    <div class="px-5 pb-5 pt-0">
                         <a href="product.php?slug=<?= urlencode($rp['slug']) ?>"
-                            class="block w-full py-3.5 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-[10px] tracking-widest text-center">
-                            View Details
+                            class="flex items-center gap-2 w-full py-4 px-4 bg-slate-50 group-hover:bg-blue-600 group-hover:text-white border border-slate-100 group-hover:border-blue-600 text-slate-700 font-bold rounded-xl transition-all duration-300 text-xs tracking-wider justify-center uppercase shadow-sm">
+                            <span>View Details</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                            </svg>
                         </a>
                     </div>
                 </div>

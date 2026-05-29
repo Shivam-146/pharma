@@ -107,7 +107,7 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden pt-20">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
     <!-- Preloader -->
     <div id="preloader">
@@ -128,11 +128,11 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
             <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/60 to-slate-900/40"></div>
             <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
         </div>
-        <div class="relative z-10 container mx-auto px-6 pt-12 pb-48">
+        <div class="relative z-10 container mx-auto px-6 pt-32 pb-36 md:pb-48">
             <span class="inline-block px-4 py-1.5 mb-6 bg-blue-500/20 backdrop-blur-md border border-white/10 rounded-full text-blue-200 text-xs font-bold tracking-widest uppercase">
                 Medical Portfolio
             </span>
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight italic">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tight italic">
                 Our <span class="text-green-400">Products</span>
             </h1>
             <p class="text-xl text-blue-100 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -142,13 +142,13 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
     </section>
 
     <!-- Products Section -->
-    <section class="relative z-20 -mt-32 pb-24">
+    <section class="relative z-20 -mt-20 md:-mt-32 pb-16 md:pb-24">
         <div class="container mx-auto px-6">
-            <div class="bg-white rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] p-8 md:p-16 lg:p-20 border border-slate-100">
+            <div class="bg-white rounded-3xl md:rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] p-6 sm:p-12 md:p-16 lg:p-20 border border-slate-100">
 
                 <div class="text-center mb-12">
                     <h3 class="text-teal-500 font-black tracking-widest uppercase text-xs mb-4">Precision Medicine</h3>
-                    <h2 class="text-3xl md:text-5xl font-black text-slate-800 italic">Quality You Can <span class="text-blue-600">Trust</span></h2>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-slate-800 italic">Quality You Can <span class="text-blue-600">Trust</span></h2>
                 </div>
 
                 <?php if (!empty($categories)): ?>
@@ -245,43 +245,61 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
                 </div>
                 <?php else: ?>
                 <!-- Products Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <?php foreach ($products as $p): ?>
-                    <div class="group bg-slate-50 rounded-[2rem] overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-transparent hover:border-slate-100">
-                        <div class="h-64 overflow-hidden relative">
-                            <?php if ($p['image']): ?>
-                            <img src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <?php else: ?>
-                            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center">
-                                <span style="font-size:4rem;">💊</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+                    <?php foreach ($products as $idx => $p): ?>
+                    <div class="reveal group bg-white rounded-2xl overflow-hidden hover:shadow-[0_15px_45px_rgba(37,99,235,0.07)] border border-slate-100 hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between h-full" style="transition-delay: <?= ($idx % 3) * 100 ?>ms;">
+                        <div>
+                            <!-- Image Container with Padding and Light Grey Background -->
+                            <div class="w-full aspect-[4/3] bg-slate-50/50 flex items-center justify-center p-5 relative overflow-hidden border-b border-slate-100/60">
+                                <?php if ($p['image']): ?>
+                                <img src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>"
+                                    class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                                <?php else: ?>
+                                <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center rounded-xl">
+                                    <span style="font-size:3rem;">💊</span>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <?php if ($p['badge']): ?>
+                                <div class="absolute top-4 right-4 bg-blue-600 text-white text-[9px] font-extrabold px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
+                                    <?= htmlspecialchars($p['badge']) ?>
+                                </div>
+                                <?php endif; ?>
                             </div>
-                            <?php endif; ?>
-                            <?php if ($p['badge']): ?>
-                            <div class="absolute top-4 right-4 bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
-                                <?= htmlspecialchars($p['badge']) ?>
+
+                            <!-- Card Body -->
+                            <div class="pt-5 px-5 pb-3">
+                                <?php if ($p['category_name']): ?>
+                                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1.5 block">
+                                    <?= htmlspecialchars($p['category_name']) ?>
+                                </span>
+                                <?php endif; ?>
+                                
+                                <h4 class="text-base sm:text-lg font-bold text-slate-800 mb-2.5 group-hover:text-blue-600 transition-colors line-clamp-1">
+                                    <?= htmlspecialchars($p['name']) ?>
+                                </h4>
+                                
+                                <?php if ($p['composition']): ?>
+                                <div class="space-y-0.5">
+                                    <span class="text-[9px] font-semibold text-slate-400 uppercase tracking-widest block">Composition</span>
+                                    <p class="text-slate-500 text-s font-medium leading-relaxed line-clamp-2">
+                                        <?= htmlspecialchars(substr($p['composition'], 0, 95)) . (strlen($p['composition']) > 95 ? '...' : '') ?>
+                                    </p>
+                                </div>
+                                <?php else: ?>
+                                <p class="text-slate-400 text-s leading-relaxed line-clamp-2">High-quality pharmaceutical solution manufactured under certified conditions.</p>
+                                <?php endif; ?>
                             </div>
-                            <?php endif; ?>
-                            <?php if ($p['category_name']): ?>
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow">
-                                <?= htmlspecialchars($p['category_name']) ?>
-                            </div>
-                            <?php endif; ?>
                         </div>
-                        <div class="p-8">
-                            <h4 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors italic">
-                                <?= htmlspecialchars($p['name']) ?>
-                            </h4>
-                            <?php if ($p['composition']): ?>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-2">
-                                <?= htmlspecialchars(substr($p['composition'], 0, 100)) . (strlen($p['composition']) > 100 ? '...' : '') ?>
-                            </p>
-                            <?php else: ?>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8">High-quality pharmaceutical product by MaasCure.</p>
-                            <?php endif; ?>
+
+                        <!-- CTA Section -->
+                        <div class="px-5 pb-5 pt-0">
                             <a href="product.php?slug=<?= urlencode($p['slug']) ?>"
-                                class="block w-full py-4 bg-white border-2 border-slate-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white text-slate-800 font-black rounded-2xl transition-all uppercase text-xs tracking-widest text-center">
-                                View Details
+                                class="flex items-center gap-2 w-full py-4 px-4 bg-slate-50 group-hover:bg-blue-600 group-hover:text-white border border-slate-100 group-hover:border-blue-600 text-slate-700 font-bold rounded-xl transition-all duration-300 text-xs tracking-wider justify-center uppercase shadow-sm">
+                                <span>View Details</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                                </svg>
                             </a>
                         </div>
                     </div>

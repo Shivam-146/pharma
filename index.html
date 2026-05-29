@@ -31,12 +31,13 @@
     <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" class="relative min-h-screen lg:h-screen flex items-center justify-center overflow-hidden">
 
         <!-- Background Video + Overlays -->
+        <!-- Video Source: https://www.pexels.com/video/a-man-and-a-woman-working-in-a-laboratory-8381416/ -->
         <div class="absolute inset-0 z-0">
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                <source src="https://www.mankindpharma.com/wp-content/uploads/2024/12/kma_2Ou0cIpo.mp4" type="video/mp4">
+                <source src="assets/laboratory.mp4" type="video/mp4">
                 <img src="assets/hero_bg.png" alt="Pharma Hero" class="w-full h-full object-cover">
             </video>
             <!-- Dark gradient overlay -->
@@ -62,13 +63,13 @@
             </div>
 
             <!-- Brand Name -->
-            <h1 class="flex flex-col items-center gap-1 mb-0">
+            <h1 class="flex flex-col items-center gap-1 mb-0 text-center">
                 <span class="text-white font-black leading-none tracking-tight"
-                    style="font-size: clamp(2.4rem, 6vw, 5.5rem); text-shadow: 0 0 80px rgba(255,255,255,0.1);">
+                    style="font-size: clamp(1.75rem, 6vw, 5.5rem); text-shadow: 0 0 80px rgba(255,255,255,0.1);">
                     MaasCure Pharmaceutical
                 </span>
                 <span class="font-extrabold leading-none tracking-tight bg-clip-text text-transparent"
-                    style="font-size: clamp(2rem, 4.8vw, 4.2rem);
+                    style="font-size: clamp(1.5rem, 4.8vw, 4.2rem);
                            background-image: linear-gradient(90deg, #fff, #34d399, #fff);
                            background-size: 200% auto;
                            -webkit-background-clip: text;
@@ -116,7 +117,7 @@
 
 
     <!-- Welcome Summary -->
-    <section id="welcome" class="py-24 bg-white">
+    <section id="welcome" class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 text-center">
             <h3 class="text-blue-600 font-bold tracking-widest uppercase mb-4">Welcome to MaasCure</h3>
             <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8 leading-tight">
@@ -128,7 +129,7 @@
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Card 1: Innovation -->
-                <div class="group relative bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(37,99,235,0.06)] hover:border-blue-500/10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
+                <div class="group relative bg-white border border-slate-100 rounded-3xl md:rounded-[2.5rem] p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(37,99,235,0.06)] hover:border-blue-500/10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
                     <div class="absolute -inset-px rounded-[2.5rem] bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                     <div class="relative z-10 flex flex-col items-center">
                         <div class="w-16 h-16 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center mb-8 text-blue-600 shadow-sm transition-all duration-500 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:rotate-6">
@@ -149,7 +150,7 @@
                 </div>
 
                 <!-- Card 2: Quality -->
-                <div class="group relative bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(16,185,129,0.06)] hover:border-emerald-500/10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
+                <div class="group relative bg-white border border-slate-100 rounded-3xl md:rounded-[2.5rem] p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(16,185,129,0.06)] hover:border-emerald-500/10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
                     <div class="absolute -inset-px rounded-[2.5rem] bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                     <div class="relative z-10 flex flex-col items-center">
                         <div class="w-16 h-16 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm transition-all duration-500 group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-105 group-hover:rotate-6">
@@ -170,7 +171,7 @@
                 </div>
 
                 <!-- Card 3: Affordability -->
-                <div class="group relative bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(37,99,235,0.06)] hover:border-blue-500/10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
+                <div class="group relative bg-white border border-slate-100 rounded-3xl md:rounded-[2.5rem] p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_30px_70px_rgba(37,99,235,0.06)] hover:border-blue-500/10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
                     <div class="absolute -inset-px rounded-[2.5rem] bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                     <div class="relative z-10 flex flex-col items-center">
                         <div class="w-16 h-16 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center mb-8 text-blue-600 shadow-sm transition-all duration-500 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:rotate-6">
@@ -214,7 +215,7 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section id="why-choose-us" class="relative py-32 bg-white overflow-hidden">
+    <section id="why-choose-us" class="relative py-16 md:py-32 bg-white overflow-hidden">
         <!-- Clinic Background Scene -->
         <div class="absolute right-0 top-0 w-full h-full z-0">
             <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10"></div>
@@ -226,7 +227,7 @@
                 <!-- Left Column: Content -->
                 <div class="lg:w-1/2 mb-16 lg:mb-0">
                     <span class="text-teal-500 font-bold tracking-widest uppercase text-sm mb-6 block">Why Choose Us</span>
-                    <h2 class="text-4xl lg:text-6xl font-bold text-slate-800 mb-8 leading-[1.1]">
+                    <h2 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-800 mb-8 leading-[1.1]">
                         MaasCure : Your Pathway <br> to Total Wellness
                     </h2>
                     <p class="text-slate-400 text-lg mb-12 max-w-xl leading-relaxed font-medium">
@@ -318,7 +319,7 @@
                 </div>
 
                 <!-- Right Column: Doctor Cutout -->
-                <div class="lg:w-1/2 flex justify-end items-end relative min-h-[600px]">
+                <div class="lg:w-1/2 flex justify-end items-end relative min-h-[300px] lg:min-h-[600px]">
                     <img src="assets/doctor_nurse.png" alt="MaasCure Health Professional" class="w-full h-auto drop-shadow-[-30px_30px_60px_rgba(0,0,0,0.1)] transition-transform duration-700 hover:scale-[1.03] z-20">
                 </div>
             </div>
@@ -326,7 +327,7 @@
     </section>
 
     <!-- Product Highlights -->
-    <section class="relative py-32 overflow-hidden border-t border-slate-200">
+    <section class="relative py-16 md:py-32 overflow-hidden border-t border-slate-200">
         <!-- Background Video -->
         <div class="absolute inset-0 z-0">
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
@@ -346,56 +347,56 @@
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
                 <a href="products.php?cat=1"
-                    class="block relative overflow-hidden p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
+                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
                     <!-- Background Image -->
                     <img src="assets/cat_tablets.jpeg" alt="Tablets" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0">
                     <!-- Overlay -->
                     <div class="absolute inset-0 bg-blue-950/75 group-hover:bg-blue-900/65 transition-colors duration-300 z-10"></div>
                     <!-- Foreground Content -->
                     <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
+                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
                             Tablets
                         </h4>
                         <span class="inline-block w-8 h-[2px] bg-blue-400 rounded transition-all duration-300 group-hover:w-16"></span>
                     </div>
                 </a>
                 <a href="products.php?q=capsules"
-                    class="block relative overflow-hidden p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
+                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
                     <!-- Background Image -->
                     <img src="assets/cat_capsules.jpeg" alt="Capsules" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0">
                     <!-- Overlay -->
                     <div class="absolute inset-0 bg-emerald-950/75 group-hover:bg-emerald-900/65 transition-colors duration-300 z-10"></div>
                     <!-- Foreground Content -->
                     <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
+                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
                             Capsules
                         </h4>
                         <span class="inline-block w-8 h-[2px] bg-emerald-400 rounded transition-all duration-300 group-hover:w-16"></span>
                     </div>
                 </a>
                 <a href="products.php?cat=2"
-                    class="block relative overflow-hidden p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
+                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
                     <!-- Background Image -->
                     <img src="assets/cat_syrups.jpeg" alt="Syrups" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0">
                     <!-- Overlay -->
                     <div class="absolute inset-0 bg-blue-950/75 group-hover:bg-blue-900/65 transition-colors duration-300 z-10"></div>
                     <!-- Foreground Content -->
                     <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
+                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
                             Syrups
                         </h4>
                         <span class="inline-block w-8 h-[2px] bg-blue-400 rounded transition-all duration-300 group-hover:w-16"></span>
                     </div>
                 </a>
                 <a href="products.php?q=injections"
-                    class="block relative overflow-hidden p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
+                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
                     <!-- Background Image -->
                     <img src="assets/cat_injections.jpeg" alt="Injections" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0">
                     <!-- Overlay -->
                     <div class="absolute inset-0 bg-emerald-950/75 group-hover:bg-emerald-900/65 transition-colors duration-300 z-10"></div>
                     <!-- Foreground Content -->
                     <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
+                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
                             Injections
                         </h4>
                         <span class="inline-block w-8 h-[2px] bg-emerald-400 rounded transition-all duration-300 group-hover:w-16"></span>
@@ -404,8 +405,8 @@
             </div>
 
             <div
-                class="bg-white/10 backdrop-blur-md border-l-4 border-blue-400 p-8 rounded-r-2xl max-w-4xl mx-auto flex items-center shadow-lg mb-12">
-                <svg class="w-10 h-10 text-blue-300 mr-6 shrink-0" fill="none" viewBox="0 0 24 24"
+                class="bg-white/10 backdrop-blur-md border-l-4 border-blue-400 p-6 md:p-8 rounded-r-2xl max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4 md:gap-0 shadow-lg mb-12">
+                <svg class="w-10 h-10 text-blue-300 mb-4 md:mb-0 md:mr-6 shrink-0" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -430,11 +431,11 @@
     </section>
 
     <!-- Quality Assurance -->
-    <section class="py-32 bg-white overflow-hidden">
-        <div class="container mx-auto px-6 reveal flex flex-col md:flex-row items-center gap-16">
+    <section class="py-16 md:py-32 bg-white overflow-hidden">
+        <div class="container mx-auto px-6 reveal flex flex-col md:flex-row items-center gap-10 md:gap-16">
             <div class="md:w-1/2">
                 <h3 class="text-green-500 font-bold tracking-widest uppercase mb-4">Quality Assurance</h3>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Quality You Can Trust</h2>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Quality You Can Trust</h2>
                 <div class="w-20 h-1 bg-blue-600 mb-8 rounded"></div>
                 <p class="text-xl text-slate-600 leading-relaxed mb-8">
                     At MaasCure Pharmaceutical Private Limited, quality is at the core of everything we do.
@@ -455,11 +456,11 @@
     </section>
 
     <!-- Vision & Mission Preview -->
-    <section class="py-32 bg-slate-50 relative overflow-hidden border-t border-slate-200">
+    <section class="py-16 md:py-32 bg-slate-50 relative overflow-hidden border-t border-slate-200">
         <div class="container mx-auto px-6 relative z-10 reveal">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div
-                    class="bg-white p-16 rounded-3xl shadow-sm border border-slate-100 hover:shadow-2xl transition-all group relative overflow-hidden">
+                    class="bg-white p-6 sm:p-12 lg:p-16 rounded-3xl shadow-sm border border-slate-100 hover:shadow-2xl transition-all group relative overflow-hidden">
                     <div
                         class="absolute -right-10 -top-10 w-40 h-40 bg-blue-50 rounded-full opacity-50 group-hover:scale-[2.5] transition-transform duration-700">
                     </div>
@@ -481,7 +482,7 @@
                     </div>
                 </div>
                 <div
-                    class="bg-white p-16 rounded-3xl shadow-sm border border-slate-100 hover:shadow-2xl transition-all group relative overflow-hidden">
+                    class="bg-white p-6 sm:p-12 lg:p-16 rounded-3xl shadow-sm border border-slate-100 hover:shadow-2xl transition-all group relative overflow-hidden">
                     <div
                         class="absolute -right-10 -top-10 w-40 h-40 bg-green-50 rounded-full opacity-50 group-hover:scale-[2.5] transition-transform duration-700">
                     </div>
@@ -511,7 +512,7 @@
     </section>
 
     <!-- Science & Innovation Section: The Nexus of Innovation -->
-    <section id="science" class="relative py-32 bg-slate-950 overflow-hidden text-white">
+    <section id="science" class="relative py-16 md:py-32 bg-slate-950 overflow-hidden text-white">
         <!-- Animated Video Background -->
         <div class="absolute inset-0 z-0">
             <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40">
@@ -526,10 +527,10 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row gap-16 items-start">
                 <!-- Left: Navigation Sidebar -->
-                <div class="lg:w-5/12 xl:w-4/12 sticky top-32">
+                <div class="lg:w-5/12 xl:w-4/12 lg:sticky lg:top-32 w-full min-w-0">
                     <div class="mb-12 reveal">
                         <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 font-bold tracking-[0.2em] uppercase text-[10px] mb-6">Research & Discovery Hub</span>
-                        <h2 class="text-5xl lg:text-6xl font-black mb-8 leading-[1.1] tracking-tight">
+                        <h2 class="text-4xl lg:text-6xl font-black mb-8 leading-[1.1] tracking-tight">
                             Science & <br>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-teal-400 to-green-400">Innovation</span>
                         </h2>
@@ -538,95 +539,111 @@
                         </p>
                     </div>
                     
-                    <div class="flex flex-col gap-4 reveal" role="tablist">
+                    <div class="relative w-full min-w-0">
+                        <!-- Left Navigation Arrow (Mobile Only) -->
+                        <button id="sci-scroll-left" class="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-slate-900/85 backdrop-blur-md rounded-full border border-white/10 flex items-center justify-center text-white opacity-0 pointer-events-none transition-all duration-300 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        
+                        <!-- Right Navigation Arrow (Mobile Only) -->
+                        <button id="sci-scroll-right" class="lg:hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-slate-900/85 backdrop-blur-md rounded-full border border-white/10 flex items-center justify-center text-white transition-all duration-300 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+
+                        <div id="sci-tabs-container" class="w-full flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-3 pb-4 lg:pb-0 scrollbar-none snap-x snap-mandatory reveal" role="tablist">
                         <!-- Tab 1: R&D -->
-                        <button class="sci-tab group active flex items-center gap-6 p-6 rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-full" data-tab="rd" role="tab" aria-selected="true">
-                            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-blue-600/20 text-blue-400 group-[.active]:bg-blue-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110">
-                                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.727 2.903a2 2 0 01-1.558 1.456l-2.31.462a2 2 0 01-1.995-1.446l-.72-2.88a2 2 0 00-1.503-1.455l-2.454-.512a2 2 0 01-1.516-1.516l-.512-2.454a2 2 0 00-1.455-1.503l-2.88-.72a2 2 0 01-1.446-1.995l.462-2.31a2 2 0 011.456-1.558l2.903-.727a2 2 0 001.414-1.96l-.477-2.387a2 2 0 01.547-1.022L7.05 2.05a2 2 0 011.022-.547l2.387.477a2 2 0 001.96-1.414l.727-2.903a2 2 0 011.558-1.456l2.31-.462a2 2 0 011.995 1.446l.72 2.88a2 2 0 00-1.503 1.455l-2.454-.512a2 2 0 01-1.516-1.516l-.512-2.454a2 2 0 00-1.455-1.503l-2.88-.72a2 2 0 01-1.446-1.995l-.462 2.31a2 2 0 01-1.456 1.558l-2.903.727a2 2 0 00-1.414 1.96l.477 2.387a2 2 0 01-.547 1.022L12 10z" /></svg>
+                        <button class="sci-tab group active flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="rd" role="tab" aria-selected="true">
+                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-blue-600/20 text-blue-400 group-[.active]:bg-blue-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
+                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.727 2.903a2 2 0 01-1.558 1.456l-2.31.462a2 2 0 01-1.995-1.446l-.72-2.88a2 2 0 00-1.503-1.455l-2.454-.512a2 2 0 01-1.516-1.516l-.512-2.454a2 2 0 00-1.455-1.503l-2.88-.72a2 2 0 01-1.446-1.995l.462-2.31a2 2 0 011.456-1.558l2.903-.727a2 2 0 001.414-1.96l-.477-2.387a2 2 0 01.547-1.022L7.05 2.05a2 2 0 011.022-.547l2.387.477a2 2 0 001.96-1.414l.727-2.903a2 2 0 011.558-1.456l2.31-.462a2 2 0 011.995 1.446l.72 2.88a2 2 0 00-1.503 1.455l-2.454-.512a2 2 0 01-1.516-1.516l-.512-2.454a2 2 0 00-1.455-1.503l-2.88-.72a2 2 0 01-1.446-1.995l-.462 2.31a2 2 0 01-1.456 1.558l-2.903.727a2 2 0 00-1.414 1.96l.477 2.387a2 2 0 01-.547 1.022L12 10z" /></svg>
                             </div>
                             <div class="flex-1">
-                                <span class="block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-blue-400 text-white/40 mb-1">FOUNDATION</span>
-                                <span class="block text-xl font-bold group-[.active]:text-white text-white/60">R&D Excellence</span>
+                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-blue-400 text-white/40 mb-1">FOUNDATION</span>
+                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">R&D Excellence</span>
                             </div>
-                            <div class="opacity-0 group-[.active]:opacity-100 transition-opacity">
+                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
                                 <svg class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                             </div>
                         </button>
-
+ 
                         <!-- Tab 2: Innovation -->
-                        <button class="sci-tab group flex items-center gap-6 p-6 rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-full" data-tab="innovation" role="tab" aria-selected="false">
-                            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-teal-600/20 text-teal-400 group-[.active]:bg-teal-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110">
-                                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        <button class="sci-tab group flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="innovation" role="tab" aria-selected="false">
+                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-teal-600/20 text-teal-400 group-[.active]:bg-teal-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
+                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                             </div>
                             <div class="flex-1">
-                                <span class="block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-teal-400 text-white/40 mb-1">FUTURE</span>
-                                <span class="block text-xl font-bold group-[.active]:text-white text-white/60">Innovation Pipeline</span>
+                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-teal-400 text-white/40 mb-1">FUTURE</span>
+                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">Innovation Pipeline</span>
                             </div>
-                            <div class="opacity-0 group-[.active]:opacity-100 transition-opacity">
+                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
                                 <svg class="w-6 h-6 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                             </div>
                         </button>
-
+ 
                         <!-- Tab 3: Clinical Trials -->
-                        <button class="sci-tab group flex items-center gap-6 p-6 rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-full" data-tab="trials" role="tab" aria-selected="false">
-                            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-purple-600/20 text-purple-400 group-[.active]:bg-purple-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110">
-                                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        <button class="sci-tab group flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="trials" role="tab" aria-selected="false">
+                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-purple-600/20 text-purple-400 group-[.active]:bg-purple-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
+                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29-9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                             </div>
                             <div class="flex-1">
-                                <span class="block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-purple-400 text-white/40 mb-1">SAFETY</span>
-                                <span class="block text-xl font-bold group-[.active]:text-white text-white/60">Clinical Excellence</span>
+                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-purple-400 text-white/40 mb-1">SAFETY</span>
+                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">Clinical Excellence</span>
                             </div>
-                            <div class="opacity-0 group-[.active]:opacity-100 transition-opacity">
+                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
                                 <svg class="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                             </div>
                         </button>
-
+ 
                         <!-- Tab 4: AI & Digital -->
-                        <button class="sci-tab group flex items-center gap-6 p-6 rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-full" data-tab="digital" role="tab" aria-selected="false">
-                            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-cyan-600/20 text-cyan-400 group-[.active]:bg-cyan-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110">
-                                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                        <button class="sci-tab group flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="digital" role="tab" aria-selected="false">
+                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-cyan-600/20 text-cyan-400 group-[.active]:bg-cyan-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
+                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                             </div>
                             <div class="flex-1">
-                                <span class="block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-cyan-400 text-white/40 mb-1">TECH</span>
-                                <span class="block text-xl font-bold group-[.active]:text-white text-white/60">AI & Digital Health</span>
+                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-cyan-400 text-white/40 mb-1">TECH</span>
+                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">AI & Digital Health</span>
                             </div>
-                            <div class="opacity-0 group-[.active]:opacity-100 transition-opacity">
+                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
                                 <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                             </div>
                         </button>
                     </div>
                 </div>
+            </div>
 
                 <!-- Right: Content Display Area -->
                 <div class="lg:w-7/12 xl:w-8/12 w-full reveal" style="transition-delay: 200ms;">
-                    <div class="sci-panels-container relative min-h-[600px]">
+                    <div class="sci-panels-container relative min-h-[400px] lg:min-h-[600px]">
                         
                         <!-- Panel: R&D -->
                         <div class="sci-panel active opacity-100 translate-y-0 transition-all duration-700" id="tab-rd">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-8 md:p-16 relative overflow-hidden group">
+                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
                                 <div class="absolute -right-20 -top-20 w-80 h-80 bg-blue-600/10 rounded-full blur-[100px] group-hover:bg-blue-600/20 transition-all duration-1000"></div>
                                 
                                 <div class="relative z-10">
-                                    <div class="flex items-center gap-6 mb-10">
-                                        <div class="w-16 h-1 bg-blue-500 rounded-full"></div>
+                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
+                                        <div class="w-12 lg:w-16 h-1 bg-blue-500 rounded-full"></div>
                                         <h3 class="text-3xl md:text-4xl font-bold">Research & Development</h3>
                                     </div>
-                                    <p class="text-xl text-slate-300 leading-relaxed mb-12">
+                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
                                         Our 12 global R&D centres house over 3,000 scientists working on novel drug molecules, biosimilars, and next-generation delivery systems.
                                     </p>
                                     
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item">
+                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item">
                                             <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover/item:scale-110 transition-transform">01</div>
                                             <h4 class="text-xl font-bold mb-2 text-white">NDDR</h4>
                                             <p class="text-slate-400 text-sm leading-relaxed">New Drug Discovery Research for next-gen molecules.</p>
                                         </div>
-                                        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item">
+                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item">
                                             <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover/item:scale-110 transition-transform">02</div>
                                             <h4 class="text-xl font-bold mb-2 text-white">Formulation</h4>
                                             <p class="text-slate-400 text-sm leading-relaxed">Advanced Drug Delivery & Formulation systems.</p>
                                         </div>
-                                        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item md:col-span-2">
+                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item md:col-span-2">
                                             <div class="flex items-center gap-6">
                                                 <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 group-hover/item:scale-110 transition-transform shrink-0">03</div>
                                                 <div>
@@ -642,24 +659,24 @@
 
                         <!-- Panel: Innovation -->
                         <div class="sci-panel hidden opacity-0 translate-y-10 transition-all duration-700" id="tab-innovation">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-8 md:p-16 relative overflow-hidden group">
+                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
                                 <div class="absolute -right-20 -top-20 w-80 h-80 bg-teal-600/10 rounded-full blur-[100px] group-hover:bg-teal-600/20 transition-all duration-1000"></div>
                                 
                                 <div class="relative z-10">
-                                    <div class="flex items-center gap-6 mb-10">
-                                        <div class="w-16 h-1 bg-teal-500 rounded-full"></div>
+                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
+                                        <div class="w-12 lg:w-16 h-1 bg-teal-500 rounded-full"></div>
                                         <h3 class="text-3xl md:text-4xl font-bold">Innovation Pipeline</h3>
                                     </div>
-                                    <p class="text-xl text-slate-300 leading-relaxed mb-12">
+                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
                                         With 800+ patents and a robust pipeline of 150+ molecules across various therapeutic areas, we are redefining boundaries.
                                     </p>
                                     
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-teal-500/30 hover:bg-white/10 transition-all duration-500 group/item">
+                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-teal-500/30 hover:bg-white/10 transition-all duration-500 group/item">
                                             <h4 class="text-xl font-bold mb-4 text-white">Oncology</h4>
                                             <p class="text-slate-400 text-sm leading-relaxed">Breakthrough treatments in cancer research.</p>
                                         </div>
-                                        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-teal-500/30 hover:bg-white/10 transition-all duration-500 group/item">
+                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-teal-500/30 hover:bg-white/10 transition-all duration-500 group/item">
                                             <h4 class="text-xl font-bold mb-4 text-white">Immunology</h4>
                                             <p class="text-slate-400 text-sm leading-relaxed">Advanced solutions for immune disorders.</p>
                                         </div>
@@ -674,15 +691,15 @@
 
                         <!-- Panel: Trials -->
                         <div class="sci-panel hidden opacity-0 translate-y-10 transition-all duration-700" id="tab-trials">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-8 md:p-16 relative overflow-hidden group">
+                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
                                 <div class="absolute -right-20 -top-20 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px] group-hover:bg-purple-600/20 transition-all duration-1000"></div>
                                 
                                 <div class="relative z-10">
-                                    <div class="flex items-center gap-6 mb-10">
-                                        <div class="w-16 h-1 bg-purple-500 rounded-full"></div>
+                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
+                                        <div class="w-12 lg:w-16 h-1 bg-purple-500 rounded-full"></div>
                                         <h3 class="text-3xl md:text-4xl font-bold">Clinical Excellence</h3>
                                     </div>
-                                    <p class="text-xl text-slate-300 leading-relaxed mb-12">
+                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
                                         Managing 200+ active trials across 40 countries, adhering to the highest ethical standards in patient safety.
                                     </p>
                                     
@@ -706,15 +723,15 @@
 
                         <!-- Panel: Digital -->
                         <div class="sci-panel hidden opacity-0 translate-y-10 transition-all duration-700" id="tab-digital">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-8 md:p-16 relative overflow-hidden group">
+                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
                                 <div class="absolute -right-20 -top-20 w-80 h-80 bg-cyan-600/10 rounded-full blur-[100px] group-hover:bg-cyan-600/20 transition-all duration-1000"></div>
                                 
                                 <div class="relative z-10">
-                                    <div class="flex items-center gap-6 mb-10">
-                                        <div class="w-16 h-1 bg-cyan-500 rounded-full"></div>
+                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
+                                        <div class="w-12 lg:w-16 h-1 bg-cyan-500 rounded-full"></div>
                                         <h3 class="text-3xl md:text-4xl font-bold">AI & Digital Health</h3>
                                     </div>
-                                    <p class="text-xl text-slate-300 leading-relaxed mb-12">
+                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
                                         Harnessing machine learning and digital biomarkers to accelerate drug discovery and personalise treatment.
                                     </p>
                                     
@@ -780,18 +797,63 @@
                     }, 400); // Wait for fade out
                 });
             });
+
+            // Scroll Arrow Navigation for Mobile Tabs slider
+            const tabsContainer = document.getElementById('sci-tabs-container');
+            const scrollLeftBtn = document.getElementById('sci-scroll-left');
+            const scrollRightBtn = document.getElementById('sci-scroll-right');
+
+            if (tabsContainer && scrollLeftBtn && scrollRightBtn) {
+                const updateScrollArrows = () => {
+                    const scrollLeft = tabsContainer.scrollLeft;
+                    const maxScroll = tabsContainer.scrollWidth - tabsContainer.clientWidth;
+
+                    // Left arrow show/hide logic
+                    if (scrollLeft > 5) {
+                        scrollLeftBtn.classList.remove('opacity-0', 'pointer-events-none');
+                        scrollLeftBtn.classList.add('opacity-100', 'pointer-events-auto');
+                    } else {
+                        scrollLeftBtn.classList.remove('opacity-100', 'pointer-events-auto');
+                        scrollLeftBtn.classList.add('opacity-0', 'pointer-events-none');
+                    }
+
+                    // Right arrow show/hide logic
+                    if (scrollLeft < maxScroll - 5) {
+                        scrollRightBtn.classList.remove('opacity-0', 'pointer-events-none');
+                        scrollRightBtn.classList.add('opacity-100', 'pointer-events-auto');
+                    } else {
+                        scrollRightBtn.classList.remove('opacity-100', 'pointer-events-auto');
+                        scrollRightBtn.classList.add('opacity-0', 'pointer-events-none');
+                    }
+                };
+
+                // Scroll actions
+                scrollLeftBtn.addEventListener('click', () => {
+                    tabsContainer.scrollBy({ left: -180, behavior: 'smooth' });
+                });
+
+                scrollRightBtn.addEventListener('click', () => {
+                    tabsContainer.scrollBy({ left: 180, behavior: 'smooth' });
+                });
+
+                tabsContainer.addEventListener('scroll', updateScrollArrows);
+                
+                // Initial update and listeners
+                updateScrollArrows();
+                window.addEventListener('resize', updateScrollArrows);
+            }
         });
     </script>
 
 
     <!-- Call to Action -->
-    <section class="relative py-24 text-white overflow-hidden text-center">
+    <section class="relative py-16 md:py-24 text-white overflow-hidden text-center">
         <div class="absolute inset-0 z-0">
             <img src="assets/contact_hero.png" alt="Partner With Us" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/60"></div>
         </div>
         <div class="container mx-auto px-6 max-w-6xl relative z-10 reveal">
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight">Partner with Us for Better Healthcare</h2>
+            <h2 class="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-8 tracking-tight">Partner with Us for Better Healthcare</h2>
             <p class="text-2xl text-blue-100 max-w-4xl mx-auto mb-12 leading-relaxed font-medium">
                 Join hands with MaasCure Pharmaceutical Private Limited to bring reliable and high-quality medicines to
                 those who need them most.

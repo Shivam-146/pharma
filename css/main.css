@@ -239,6 +239,13 @@
     font-weight: 700;
 }
 
+/* Active State for GD Link when Navbar is transparent (Dark background overlay) */
+#navbar:not(.bg-white) .nav-link-gd.nav-link-active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #34d399 !important; /* Vibrant green to stand out over dark/blue overlays */
+}
+
 .nav-link-gd.nav-link-active::after {
     width: 40%;
     opacity: 1;
@@ -274,4 +281,13 @@
 @keyframes heroShimmer {
     0%   { background-position: 0% center; }
     100% { background-position: 200% center; }
+}
+
+/* Hide scrollbars for horizontal slider elements on mobile viewports */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
