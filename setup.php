@@ -54,6 +54,18 @@ try {
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
+    // Inquiries table
+    $pdo->exec("CREATE TABLE IF NOT EXISTS `inquiries` (
+        `id`           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        `name`         VARCHAR(255) NOT NULL,
+        `email`        VARCHAR(255) NOT NULL,
+        `phone`        VARCHAR(50) NOT NULL,
+        `product_name` VARCHAR(255) NULL,
+        `message`      TEXT NOT NULL,
+        `status`       VARCHAR(50) DEFAULT 'New',
+        `created_at`   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
     // Seed default admin if empty
     $adminCount = $pdo->query("SELECT COUNT(*) FROM `admins`")->fetchColumn();
     if ($adminCount == 0) {

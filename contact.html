@@ -26,7 +26,7 @@
     <!-- Page Hero -->
     <section class="relative min-h-[60vh] flex items-center justify-center text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="assets/contact_hero.png" alt="Contact Us Hero" class="w-full h-full object-cover scale-110">
+            <img src="assets/contact.png" alt="Contact Us Hero" class="w-full h-full object-cover scale-110">
             <!-- Multi-layer overlay -->
             <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/60 to-slate-900/40"></div>
             <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
@@ -206,9 +206,30 @@
             if (enquiryForm) {
                 enquiryForm.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    enquiryForm.classList.add('hidden');
-                    successMsg.classList.remove('hidden');
-                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    const formData = new FormData(enquiryForm);
+                    if (productParam) {
+                        formData.append('product_name', productParam);
+                    }
+                    
+                    fetch('submit-enquiry.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            enquiryForm.classList.add('hidden');
+                            successMsg.classList.remove('hidden');
+                            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } else {
+                            alert(data.errors ? data.errors.join("\n") : (data.error || 'Submission failed.'));
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('An unexpected error occurred. Please try again.');
+                    });
                 });
             }
         });

@@ -509,246 +509,169 @@
                 </div>
             </div>
         </div>
-    </section>
-
     <!-- Science & Innovation Section: The Nexus of Innovation -->
-    <section id="science" class="relative py-16 md:py-32 bg-slate-950 overflow-hidden text-white">
-        <!-- Animated Video Background -->
+    <section id="science" class="relative py-20 md:py-28 bg-slate-950 overflow-hidden text-white border-t border-slate-900">
+        <!-- Ambient Video Background -->
         <div class="absolute inset-0 z-0">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40">
-                <source src="https://cdn.pixabay.com/video/2024/01/20/197486-905015022_large.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30">
+                <source src="assets/laboratory.mp4" type="video/mp4">
             </video>
-            <!-- Dark gradient overlay to blend with the rest of the site -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80"></div>
-            <!-- Radial glow for focus -->
-            <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);"></div>
+            <!-- Overlay and radial spotlight -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/90 to-slate-950"></div>
+            <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(13,148,136,0.1) 0%, transparent 70%);"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row gap-16 items-start">
-                <!-- Left: Navigation Sidebar -->
-                <div class="lg:w-5/12 xl:w-4/12 lg:sticky lg:top-32 w-full min-w-0">
-                    <div class="mb-12 reveal">
-                        <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 font-bold tracking-[0.2em] uppercase text-[10px] mb-6">Research & Discovery Hub</span>
-                        <h2 class="text-4xl lg:text-6xl font-black mb-8 leading-[1.1] tracking-tight">
-                            Science & <br>
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-teal-400 to-green-400">Innovation</span>
-                        </h2>
-                        <p class="text-slate-400 text-lg max-w-md leading-relaxed">
-                            Pushing the boundaries of pharmaceutical science to bring tomorrow's cures to patients today.
-                        </p>
-                    </div>
-                    
-                    <div class="relative w-full min-w-0">
-                        <!-- Left Navigation Arrow (Mobile Only) -->
-                        <button id="sci-scroll-left" class="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-slate-900/85 backdrop-blur-md rounded-full border border-white/10 flex items-center justify-center text-white opacity-0 pointer-events-none transition-all duration-300 shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-                        
-                        <!-- Right Navigation Arrow (Mobile Only) -->
-                        <button id="sci-scroll-right" class="lg:hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-slate-900/85 backdrop-blur-md rounded-full border border-white/10 flex items-center justify-center text-white transition-all duration-300 shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 font-extrabold tracking-[0.2em] uppercase text-[10px] mb-4">
+                    Research & Development
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mb-6 tracking-tight italic">
+                    Science & <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400">Innovation</span>
+                </h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-teal-500 to-blue-500 mx-auto rounded mb-6"></div>
+                <p class="text-slate-400 text-lg leading-relaxed font-medium">
+                    Advancing healthcare through cutting-edge research, scientific excellence, and continuous innovation.
+                </p>
+            </div>
 
-                        <div id="sci-tabs-container" class="w-full flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-3 pb-4 lg:pb-0 scrollbar-none snap-x snap-mandatory reveal" role="tablist">
-                        <!-- Tab 1: R&D -->
-                        <button class="sci-tab group active flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="rd" role="tab" aria-selected="true">
-                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-blue-600/20 text-blue-400 group-[.active]:bg-blue-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
-                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.727 2.903a2 2 0 01-1.558 1.456l-2.31.462a2 2 0 01-1.995-1.446l-.72-2.88a2 2 0 00-1.503-1.455l-2.454-.512a2 2 0 01-1.516-1.516l-.512-2.454a2 2 0 00-1.455-1.503l-2.88-.72a2 2 0 01-1.446-1.995l.462-2.31a2 2 0 011.456-1.558l2.903-.727a2 2 0 001.414-1.96l-.477-2.387a2 2 0 01.547-1.022L7.05 2.05a2 2 0 011.022-.547l2.387.477a2 2 0 001.96-1.414l.727-2.903a2 2 0 011.558-1.456l2.31-.462a2 2 0 011.995 1.446l.72 2.88a2 2 0 00-1.503 1.455l-2.454-.512a2 2 0 01-1.516-1.516l-.512-2.454a2 2 0 00-1.455-1.503l-2.88-.72a2 2 0 01-1.446-1.995l-.462 2.31a2 2 0 01-1.456 1.558l-2.903.727a2 2 0 00-1.414 1.96l.477 2.387a2 2 0 01-.547 1.022L12 10z" /></svg>
-                            </div>
-                            <div class="flex-1">
-                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-blue-400 text-white/40 mb-1">FOUNDATION</span>
-                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">R&D Excellence</span>
-                            </div>
-                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
-                                <svg class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                            </div>
-                        </button>
- 
-                        <!-- Tab 2: Innovation -->
-                        <button class="sci-tab group flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="innovation" role="tab" aria-selected="false">
-                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-teal-600/20 text-teal-400 group-[.active]:bg-teal-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
-                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                            </div>
-                            <div class="flex-1">
-                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-teal-400 text-white/40 mb-1">FUTURE</span>
-                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">Innovation Pipeline</span>
-                            </div>
-                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
-                                <svg class="w-6 h-6 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                            </div>
-                        </button>
- 
-                        <!-- Tab 3: Clinical Trials -->
-                        <button class="sci-tab group flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="trials" role="tab" aria-selected="false">
-                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-purple-600/20 text-purple-400 group-[.active]:bg-purple-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
-                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29-9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                            </div>
-                            <div class="flex-1">
-                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-purple-400 text-white/40 mb-1">SAFETY</span>
-                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">Clinical Excellence</span>
-                            </div>
-                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
-                                <svg class="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                            </div>
-                        </button>
- 
-                        <!-- Tab 4: AI & Digital -->
-                        <button class="sci-tab group flex items-center gap-3 lg:gap-6 p-3.5 lg:p-6 rounded-2xl lg:rounded-3xl transition-all duration-500 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-left w-auto lg:w-full shrink-0 snap-center" data-tab="digital" role="tab" aria-selected="false">
-                            <div class="w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-xl lg:rounded-2xl bg-cyan-600/20 text-cyan-400 group-[.active]:bg-cyan-600 group-[.active]:text-white shadow-lg transition-all duration-500 group-hover:scale-110 shrink-0">
-                                <svg class="w-5 h-5 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-                            </div>
-                            <div class="flex-1">
-                                <span class="hidden lg:block text-[10px] font-bold tracking-[0.2em] group-[.active]:text-cyan-400 text-white/40 mb-1">TECH</span>
-                                <span class="block text-sm lg:text-xl font-bold group-[.active]:text-white text-white/60 whitespace-nowrap">AI & Digital Health</span>
-                            </div>
-                            <div class="hidden lg:block opacity-0 group-[.active]:opacity-100 transition-opacity">
-                                <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                            </div>
-                        </button>
+            <!-- Innovation Cards (4 Cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 reveal">
+                <!-- Card 1 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:scale-[1.03] hover:bg-white/10 hover:border-teal-500/30 group hover:shadow-[0_15px_30px_rgba(13,148,136,0.1)]">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl font-bold mb-5 transition-transform duration-500 group-hover:scale-115 group-hover:bg-teal-500 group-hover:text-white">
+                        🧪
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3 transition-colors duration-300 group-hover:text-teal-400">Advanced Research</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                        Developing innovative pharmaceutical formulations through scientific expertise.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:scale-[1.03] hover:bg-white/10 hover:border-blue-500/30 group hover:shadow-[0_15px_30px_rgba(59,130,246,0.1)]">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl font-bold mb-5 transition-transform duration-500 group-hover:scale-115 group-hover:bg-blue-500 group-hover:text-white">
+                        🔬
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3 transition-colors duration-300 group-hover:text-blue-400">Modern Laboratories</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                        Equipped with advanced testing and quality assurance technologies.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:scale-[1.03] hover:bg-white/10 hover:border-teal-500/30 group hover:shadow-[0_15px_30px_rgba(13,148,136,0.1)]">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl font-bold mb-5 transition-transform duration-500 group-hover:scale-115 group-hover:bg-teal-500 group-hover:text-white">
+                        ⚙️
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3 transition-colors duration-300 group-hover:text-teal-400">Smart Manufacturing</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                        Precision-driven production processes ensuring consistency and safety.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:scale-[1.03] hover:bg-white/10 hover:border-blue-500/30 group hover:shadow-[0_15px_30px_rgba(59,130,246,0.1)]">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl font-bold mb-5 transition-transform duration-500 group-hover:scale-115 group-hover:bg-blue-500 group-hover:text-white">
+                        ❤️
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3 transition-colors duration-300 group-hover:text-blue-400">Patient-Focused Innovation</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                        Creating healthcare solutions that improve lives and patient outcomes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Highlights / Statistics Section -->
+            <div class="bg-gradient-to-r from-slate-900 via-white/5 to-slate-900 border border-white/5 rounded-3xl p-8 md:p-12 mb-16 reveal shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/5">
+                    <!-- Stat 1 -->
+                    <div class="pt-6 md:pt-0">
+                        <span class="block text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400 tracking-tight mb-2 sci-counter" data-target="50">0</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Innovative Formulations</span>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div class="pt-6 md:pt-0">
+                        <span class="block text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400 tracking-tight mb-2 sci-counter-decimal" data-target="99.9">0</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Quality Accuracy</span>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div class="pt-6 md:pt-0">
+                        <span class="block text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400 tracking-tight mb-2 sci-counter" data-target="25">0</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Therapeutic Solutions</span>
                     </div>
                 </div>
             </div>
 
-                <!-- Right: Content Display Area -->
-                <div class="lg:w-7/12 xl:w-8/12 w-full reveal" style="transition-delay: 200ms;">
-                    <div class="sci-panels-container relative min-h-[400px] lg:min-h-[600px]">
-                        
-                        <!-- Panel: R&D -->
-                        <div class="sci-panel active opacity-100 translate-y-0 transition-all duration-700" id="tab-rd">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
-                                <div class="absolute -right-20 -top-20 w-80 h-80 bg-blue-600/10 rounded-full blur-[100px] group-hover:bg-blue-600/20 transition-all duration-1000"></div>
-                                
-                                <div class="relative z-10">
-                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
-                                        <div class="w-12 lg:w-16 h-1 bg-blue-500 rounded-full"></div>
-                                        <h3 class="text-3xl md:text-4xl font-bold">Research & Development</h3>
-                                    </div>
-                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
-                                        Our 12 global R&D centres house over 3,000 scientists working on novel drug molecules, biosimilars, and next-generation delivery systems.
-                                    </p>
-                                    
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item">
-                                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover/item:scale-110 transition-transform">01</div>
-                                            <h4 class="text-xl font-bold mb-2 text-white">NDDR</h4>
-                                            <p class="text-slate-400 text-sm leading-relaxed">New Drug Discovery Research for next-gen molecules.</p>
-                                        </div>
-                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item">
-                                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover/item:scale-110 transition-transform">02</div>
-                                            <h4 class="text-xl font-bold mb-2 text-white">Formulation</h4>
-                                            <p class="text-slate-400 text-sm leading-relaxed">Advanced Drug Delivery & Formulation systems.</p>
-                                        </div>
-                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all duration-500 group/item md:col-span-2">
-                                            <div class="flex items-center gap-6">
-                                                <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 group-hover/item:scale-110 transition-transform shrink-0">03</div>
-                                                <div>
-                                                    <h4 class="text-xl font-bold text-white">Biotechnology & Biologics</h4>
-                                                    <p class="text-slate-400 text-sm leading-relaxed">Pioneering complex biological treatments.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <!-- Mini Process Timeline Section -->
+            <div class="reveal">
+                <h3 class="text-center text-xs font-bold text-teal-400 tracking-widest uppercase mb-12">Innovation Journey</h3>
+                
+                <!-- Horizontal/Vertical Timeline Wrapper -->
+                <div class="relative max-w-5xl mx-auto px-4">
+                    <!-- Progress Connecting Line (Desktop Only) -->
+                    <div class="hidden lg:block absolute top-[27px] left-8 right-8 h-1 bg-gradient-to-r from-teal-500/25 via-blue-500/25 to-teal-500/25 z-0 rounded-full">
+                        <div class="h-full bg-gradient-to-r from-teal-500 via-blue-500 to-teal-500 rounded-full animate-pulse" style="width: 100%;"></div>
+                    </div>
+                    
+                    <div class="flex flex-col lg:flex-row justify-between gap-10 lg:gap-4 relative z-10">
+                        <!-- Step 1 -->
+                        <div class="flex-1 flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center group">
+                            <!-- Node Circle -->
+                            <div class="w-14 h-14 rounded-full bg-slate-900 border-2 border-teal-500 text-teal-400 flex items-center justify-center text-xl font-bold shrink-0 shadow-lg shadow-teal-500/10 z-10 transition-all duration-300 group-hover:scale-110 group-hover:border-white group-hover:shadow-white/20">
+                                01
+                            </div>
+                            <!-- Text Block -->
+                            <div class="ml-6 lg:ml-0 lg:mt-6">
+                                <h5 class="font-extrabold text-white text-base tracking-wide group-hover:text-teal-400 transition-colors">Research</h5>
+                                <p class="text-slate-400 text-xs mt-1 leading-relaxed max-w-xs mx-auto">Identifying molecule targets & potential solutions.</p>
                             </div>
                         </div>
 
-                        <!-- Panel: Innovation -->
-                        <div class="sci-panel hidden opacity-0 translate-y-10 transition-all duration-700" id="tab-innovation">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
-                                <div class="absolute -right-20 -top-20 w-80 h-80 bg-teal-600/10 rounded-full blur-[100px] group-hover:bg-teal-600/20 transition-all duration-1000"></div>
-                                
-                                <div class="relative z-10">
-                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
-                                        <div class="w-12 lg:w-16 h-1 bg-teal-500 rounded-full"></div>
-                                        <h3 class="text-3xl md:text-4xl font-bold">Innovation Pipeline</h3>
-                                    </div>
-                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
-                                        With 800+ patents and a robust pipeline of 150+ molecules across various therapeutic areas, we are redefining boundaries.
-                                    </p>
-                                    
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-teal-500/30 hover:bg-white/10 transition-all duration-500 group/item">
-                                            <h4 class="text-xl font-bold mb-4 text-white">Oncology</h4>
-                                            <p class="text-slate-400 text-sm leading-relaxed">Breakthrough treatments in cancer research.</p>
-                                        </div>
-                                        <div class="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-teal-500/30 hover:bg-white/10 transition-all duration-500 group/item">
-                                            <h4 class="text-xl font-bold mb-4 text-white">Immunology</h4>
-                                            <p class="text-slate-400 text-sm leading-relaxed">Advanced solutions for immune disorders.</p>
-                                        </div>
-                                        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-teal-500/30 hover:bg-white/10 transition-all duration-500 group/item md:col-span-2 text-center">
-                                            <span class="text-teal-400 font-black text-6xl block mb-2">150+</span>
-                                            <span class="text-white font-bold uppercase tracking-widest">Active Molecules</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Step 2 -->
+                        <div class="flex-1 flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center group">
+                            <div class="w-14 h-14 rounded-full bg-slate-900 border-2 border-blue-500 text-blue-400 flex items-center justify-center text-xl font-bold shrink-0 shadow-lg shadow-blue-500/10 z-10 transition-all duration-300 group-hover:scale-110 group-hover:border-white group-hover:shadow-white/20">
+                                02
+                            </div>
+                            <div class="ml-6 lg:ml-0 lg:mt-6">
+                                <h5 class="font-extrabold text-white text-base tracking-wide group-hover:text-blue-400 transition-colors">Development</h5>
+                                <p class="text-slate-400 text-xs mt-1 leading-relaxed max-w-xs mx-auto">Synthesizing formulations & chemical prototypes.</p>
                             </div>
                         </div>
 
-                        <!-- Panel: Trials -->
-                        <div class="sci-panel hidden opacity-0 translate-y-10 transition-all duration-700" id="tab-trials">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
-                                <div class="absolute -right-20 -top-20 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px] group-hover:bg-purple-600/20 transition-all duration-1000"></div>
-                                
-                                <div class="relative z-10">
-                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
-                                        <div class="w-12 lg:w-16 h-1 bg-purple-500 rounded-full"></div>
-                                        <h3 class="text-3xl md:text-4xl font-bold">Clinical Excellence</h3>
-                                    </div>
-                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
-                                        Managing 200+ active trials across 40 countries, adhering to the highest ethical standards in patient safety.
-                                    </p>
-                                    
-                                    <div class="space-y-4">
-                                        <div class="flex items-center justify-between p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                                            <span class="text-lg font-medium">Phase I–IV Clinical Studies</span>
-                                            <span class="text-purple-400">Global Reach</span>
-                                        </div>
-                                        <div class="flex items-center justify-between p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                                            <span class="text-lg font-medium">Adaptive Trial Designs</span>
-                                            <span class="text-purple-400">Advanced AI</span>
-                                        </div>
-                                        <div class="flex items-center justify-between p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                                            <span class="text-lg font-medium">Patient Recruitment Programs</span>
-                                            <span class="text-purple-400">40+ Countries</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Step 3 -->
+                        <div class="flex-1 flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center group">
+                            <div class="w-14 h-14 rounded-full bg-slate-900 border-2 border-teal-500 text-teal-400 flex items-center justify-center text-xl font-bold shrink-0 shadow-lg shadow-teal-500/10 z-10 transition-all duration-300 group-hover:scale-110 group-hover:border-white group-hover:shadow-white/20">
+                                03
+                            </div>
+                            <div class="ml-6 lg:ml-0 lg:mt-6">
+                                <h5 class="font-extrabold text-white text-base tracking-wide group-hover:text-teal-400 transition-colors">Testing</h5>
+                                <p class="text-slate-400 text-xs mt-1 leading-relaxed max-w-xs mx-auto">Pre-clinical evaluations & trial validation.</p>
                             </div>
                         </div>
 
-                        <!-- Panel: Digital -->
-                        <div class="sci-panel hidden opacity-0 translate-y-10 transition-all duration-700" id="tab-digital">
-                            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 sm:p-16 relative overflow-hidden group">
-                                <div class="absolute -right-20 -top-20 w-80 h-80 bg-cyan-600/10 rounded-full blur-[100px] group-hover:bg-cyan-600/20 transition-all duration-1000"></div>
-                                
-                                <div class="relative z-10">
-                                    <div class="flex items-center gap-4 lg:gap-6 mb-6 lg:mb-10">
-                                        <div class="w-12 lg:w-16 h-1 bg-cyan-500 rounded-full"></div>
-                                        <h3 class="text-3xl md:text-4xl font-bold">AI & Digital Health</h3>
-                                    </div>
-                                    <p class="text-base md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12">
-                                        Harnessing machine learning and digital biomarkers to accelerate drug discovery and personalise treatment.
-                                    </p>
-                                    
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div class="aspect-square rounded-3xl bg-cyan-600/10 border border-cyan-500/20 flex flex-col items-center justify-center text-center p-6 hover:bg-cyan-600/20 transition-all cursor-default">
-                                            <div class="text-3xl mb-4">🧬</div>
-                                            <span class="font-bold">Genomics</span>
-                                        </div>
-                                        <div class="aspect-square rounded-3xl bg-cyan-600/10 border border-cyan-500/20 flex flex-col items-center justify-center text-center p-6 hover:bg-cyan-600/20 transition-all cursor-default">
-                                            <div class="text-3xl mb-4">💻</div>
-                                            <span class="font-bold">Drug Design</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Step 4 -->
+                        <div class="flex-1 flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center group">
+                            <div class="w-14 h-14 rounded-full bg-slate-900 border-2 border-blue-500 text-blue-400 flex items-center justify-center text-xl font-bold shrink-0 shadow-lg shadow-blue-500/10 z-10 transition-all duration-300 group-hover:scale-110 group-hover:border-white group-hover:shadow-white/20">
+                                04
+                            </div>
+                            <div class="ml-6 lg:ml-0 lg:mt-6">
+                                <h5 class="font-extrabold text-white text-base tracking-wide group-hover:text-blue-400 transition-colors">Validation</h5>
+                                <p class="text-slate-400 text-xs mt-1 leading-relaxed max-w-xs mx-auto">Rigorous audits & standard compliance checks.</p>
                             </div>
                         </div>
 
+                        <!-- Step 5 -->
+                        <div class="flex-1 flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center group">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-r from-teal-500 to-blue-500 text-white flex items-center justify-center text-xl font-bold shrink-0 shadow-lg shadow-teal-500/20 z-10 transition-all duration-300 group-hover:scale-110 group-hover:border-white group-hover:shadow-white/30">
+                                05
+                            </div>
+                            <div class="ml-6 lg:ml-0 lg:mt-6">
+                                <h5 class="font-extrabold text-white text-base tracking-wide group-hover:text-teal-400 transition-colors">Solutions</h5>
+                                <p class="text-slate-400 text-xs mt-1 leading-relaxed max-w-xs mx-auto">Releasing patient-centric, reliable healthcare.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -756,92 +679,52 @@
     </section>
 
     <script>
-        // Enhanced Creative Tabs for Science Section
+        // Interactive functions for Science Section Counters
         document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.sci-tab');
-            const panels = document.querySelectorAll('.sci-panel');
+            const animateCounters = () => {
+                const counters = document.querySelectorAll('.sci-counter');
+                const decimalCounters = document.querySelectorAll('.sci-counter-decimal');
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    if (tab.classList.contains('active')) return;
-
-                    const targetTab = tab.getAttribute('data-tab');
-                    const targetPanel = document.getElementById('tab-' + targetTab);
-
-                    // 1. Update Tabs State
-                    tabs.forEach(t => {
-                        t.classList.remove('active');
-                        t.setAttribute('aria-selected', 'false');
-                    });
-                    tab.classList.add('active');
-                    tab.setAttribute('aria-selected', 'true');
-
-                    // 2. Animate Panels
-                    const activePanel = document.querySelector('.sci-panel.active');
-                    
-                    // Fade out current panel
-                    activePanel.classList.add('opacity-0', 'translate-y-10');
-                    activePanel.classList.remove('opacity-100', 'translate-y-0');
-                    
-                    setTimeout(() => {
-                        activePanel.classList.add('hidden');
-                        
-                        // Prep and fade in new panel
-                        targetPanel.classList.remove('hidden');
-                        // Small reflow trigger
-                        void targetPanel.offsetWidth;
-                        
-                        targetPanel.classList.remove('opacity-0', 'translate-y-10');
-                        targetPanel.classList.add('active', 'opacity-100', 'translate-y-0');
-                        activePanel.classList.remove('active');
-                    }, 400); // Wait for fade out
-                });
-            });
-
-            // Scroll Arrow Navigation for Mobile Tabs slider
-            const tabsContainer = document.getElementById('sci-tabs-container');
-            const scrollLeftBtn = document.getElementById('sci-scroll-left');
-            const scrollRightBtn = document.getElementById('sci-scroll-right');
-
-            if (tabsContainer && scrollLeftBtn && scrollRightBtn) {
-                const updateScrollArrows = () => {
-                    const scrollLeft = tabsContainer.scrollLeft;
-                    const maxScroll = tabsContainer.scrollWidth - tabsContainer.clientWidth;
-
-                    // Left arrow show/hide logic
-                    if (scrollLeft > 5) {
-                        scrollLeftBtn.classList.remove('opacity-0', 'pointer-events-none');
-                        scrollLeftBtn.classList.add('opacity-100', 'pointer-events-auto');
-                    } else {
-                        scrollLeftBtn.classList.remove('opacity-100', 'pointer-events-auto');
-                        scrollLeftBtn.classList.add('opacity-0', 'pointer-events-none');
-                    }
-
-                    // Right arrow show/hide logic
-                    if (scrollLeft < maxScroll - 5) {
-                        scrollRightBtn.classList.remove('opacity-0', 'pointer-events-none');
-                        scrollRightBtn.classList.add('opacity-100', 'pointer-events-auto');
-                    } else {
-                        scrollRightBtn.classList.remove('opacity-100', 'pointer-events-auto');
-                        scrollRightBtn.classList.add('opacity-0', 'pointer-events-none');
-                    }
+                const observerOptions = {
+                    root: null,
+                    threshold: 0.3
                 };
 
-                // Scroll actions
-                scrollLeftBtn.addEventListener('click', () => {
-                    tabsContainer.scrollBy({ left: -180, behavior: 'smooth' });
-                });
+                const startCounting = (counter, target, isDecimal = false) => {
+                    let start = 0;
+                    const duration = 2000;
+                    const stepTime = 30;
+                    const steps = duration / stepTime;
+                    const increment = target / steps;
 
-                scrollRightBtn.addEventListener('click', () => {
-                    tabsContainer.scrollBy({ left: 180, behavior: 'smooth' });
-                });
+                    const timer = setInterval(() => {
+                        start += increment;
+                        if (start >= target) {
+                            clearInterval(timer);
+                            counter.innerText = isDecimal ? target.toFixed(1) + '%' : Math.floor(target) + '+';
+                        } else {
+                            counter.innerText = isDecimal ? start.toFixed(1) + '%' : Math.floor(start) + '+';
+                        }
+                    }, stepTime);
+                };
 
-                tabsContainer.addEventListener('scroll', updateScrollArrows);
-                
-                // Initial update and listeners
-                updateScrollArrows();
-                window.addEventListener('resize', updateScrollArrows);
-            }
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const counter = entry.target;
+                            const target = parseFloat(counter.getAttribute('data-target'));
+                            const isDecimal = counter.classList.contains('sci-counter-decimal');
+                            startCounting(counter, target, isDecimal);
+                            observer.unobserve(counter);
+                        }
+                    });
+                }, observerOptions);
+
+                counters.forEach(counter => observer.observe(counter));
+                decimalCounters.forEach(counter => observer.observe(counter));
+            };
+
+            animateCounters();
         });
     </script>
 
@@ -849,7 +732,7 @@
     <!-- Call to Action -->
     <section class="relative py-16 md:py-24 text-white overflow-hidden text-center">
         <div class="absolute inset-0 z-0">
-            <img src="assets/contact_hero.png" alt="Partner With Us" class="w-full h-full object-cover">
+            <img src="assets/contact.png" alt="Partner With Us" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/60"></div>
         </div>
         <div class="container mx-auto px-6 max-w-6xl relative z-10 reveal">

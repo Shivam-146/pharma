@@ -144,7 +144,62 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
     <!-- Products Section -->
     <section class="relative z-20 -mt-20 md:-mt-32 pb-16 md:pb-24">
         <div class="container mx-auto px-6">
-            <div class="bg-white rounded-3xl md:rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] p-6 sm:p-12 md:p-16 lg:p-20 border border-slate-100">
+            <div class="bg-white rounded-3xl md:rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] p-6 sm:p-12 md:p-16 lg:p-20 border border-slate-100 relative overflow-hidden">
+                
+                <!-- Biological Background Watermarks (Absolute elements) -->
+                <!-- Molecule 1 (Top Left) -->
+                <svg class="absolute top-10 -left-16 w-96 h-96 text-blue-600/[0.03] pointer-events-none select-none z-0 hidden lg:block" viewBox="0 0 200 200" fill="currentColor">
+                    <circle cx="50" cy="50" r="6" />
+                    <circle cx="100" cy="20" r="4" />
+                    <circle cx="150" cy="50" r="5" />
+                    <circle cx="150" cy="110" r="6" />
+                    <circle cx="100" cy="140" r="4" />
+                    <circle cx="50" cy="110" r="5" />
+                    <circle cx="100" cy="80" r="3" />
+                    <line x1="50" y1="50" x2="100" y2="20" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="100" y1="20" x2="150" y2="50" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="150" y1="50" x2="150" y2="110" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="150" y1="110" x2="100" y2="140" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="100" y1="140" x2="50" y2="110" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="50" y1="110" x2="50" y2="50" stroke="currentColor" stroke-width="1.5" />
+                    <line x1="60" y1="55" x2="95" y2="34" stroke="currentColor" stroke-width="1" stroke-dasharray="2,2" />
+                    <line x1="140" y1="105" x2="105" y2="126" stroke="currentColor" stroke-width="1" stroke-dasharray="2,2" />
+                    <line x1="100" y1="80" x2="50" y2="50" stroke="currentColor" stroke-width="1" />
+                    <line x1="100" y1="80" x2="150" y2="50" stroke="currentColor" stroke-width="1" />
+                    <line x1="100" y1="80" x2="100" y2="140" stroke="currentColor" stroke-width="1" />
+                </svg>
+
+                <!-- Molecule 2 (Bottom Right) -->
+                <svg class="absolute bottom-10 -right-20 w-[32rem] h-[32rem] text-emerald-500/[0.03] pointer-events-none select-none z-0 hidden lg:block" viewBox="0 0 200 200" fill="currentColor">
+                    <circle cx="30" cy="100" r="4" />
+                    <circle cx="70" cy="80" r="5" />
+                    <circle cx="110" cy="100" r="4" />
+                    <circle cx="150" cy="80" r="6" />
+                    <circle cx="190" cy="100" r="4" />
+                    <circle cx="110" cy="150" r="5" />
+                    <circle cx="70" cy="170" r="3" />
+                    <line x1="30" y1="100" x2="70" y2="80" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="70" y1="80" x2="110" y2="100" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="110" y1="100" x2="150" y2="80" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="150" y1="80" x2="190" y2="100" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="110" y1="100" x2="110" y2="150" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="110" y1="150" x2="70" y2="170" stroke="currentColor" stroke-width="1.2" />
+                    <circle cx="150" cy="30" r="3" />
+                    <line x1="150" y1="80" x2="150" y2="30" stroke="currentColor" stroke-width="1" />
+                    <circle cx="30" cy="150" r="5" />
+                    <line x1="30" y1="100" x2="30" y2="150" stroke="currentColor" stroke-width="1" />
+                </svg>
+
+                <!-- Molecule 3 (Middle Right) -->
+                <svg class="absolute top-1/3 -right-10 w-80 h-80 text-blue-600/[0.02] pointer-events-none select-none z-0 hidden xl:block" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M10,20 Q30,5 50,20 T90,20" stroke="currentColor" stroke-width="1" fill="none"/>
+                    <path d="M10,40 Q30,55 50,40 T90,40" stroke="currentColor" stroke-width="1" fill="none"/>
+                    <line x1="20" y1="28" x2="20" y2="32" stroke="currentColor" stroke-width="1"/>
+                    <line x1="35" y1="18" x2="35" y2="42" stroke="currentColor" stroke-width="1"/>
+                    <line x1="50" y1="20" x2="50" y2="40" stroke="currentColor" stroke-width="1"/>
+                    <line x1="65" y1="28" x2="65" y2="32" stroke="currentColor" stroke-width="1"/>
+                    <line x1="80" y1="18" x2="80" y2="42" stroke="currentColor" stroke-width="1"/>
+                </svg>
 
                 <div class="text-center mb-12">
                     <h3 class="text-teal-500 font-black tracking-widest uppercase text-xs mb-4">Precision Medicine</h3>
