@@ -63,15 +63,17 @@ function initNavbar() {
     const navLogoText = document.getElementById('nav-logo-text');
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || !window.location.pathname.includes('.');
+    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('index.php') || window.location.pathname.endsWith('/') || !window.location.pathname.includes('.');
 
     // Initial Active Link Highlight
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    let currentPage = window.location.pathname.split('/').pop() || 'index.php';
+    if (currentPage === 'index.html') currentPage = 'index.php';
     
     const highlightLinks = (links) => {
         links.forEach(link => {
             link.classList.remove('nav-link-active', 'text-blue-600', 'font-bold');
-            const href = link.getAttribute('href');
+            let href = link.getAttribute('href');
+            if (href === 'index.html') href = 'index.php'; // Map links
             if (href === currentPage || (currentPage === 'product.php' && href === 'products.php')) {
                 link.classList.add('nav-link-active');
             }

@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/products_data.php';
+?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
@@ -125,7 +128,7 @@
             </h2>
             <p class="text-lg text-slate-600 leading-relaxed mb-12 max-w-3xl mx-auto">
                 We are a leading pharmaceutical company dedicated to providing high-quality medical solutions. Explore
-                our journey, our products, and our commitment to a healthier world.
+                our journey, our products, and our commitment to a healthier India.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Card 1: Innovation -->
@@ -306,9 +309,9 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-2xl font-bold text-slate-700 mb-2">Global Community of Wellness</h4>
+                                <h4 class="text-2xl font-bold text-slate-700 mb-2">National Community of Wellness</h4>
                                 <p class="text-slate-400 text-lg leading-snug">
-                                    Join a diverse and supportive community of users worldwide, sharing a commitment to healthier living through MaasCure.
+                                    Join a diverse and supportive community of users across India, sharing a commitment to healthier living through MaasCure.
                                 </p>
                             </div>
                         </div>
@@ -342,64 +345,94 @@
                 <p class="text-lg text-blue-100 max-w-2xl mx-auto">We offer a diverse portfolio of pharmaceutical
                     products designed to meet various healthcare needs.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-                <a href="products.php?cat=1"
-                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
-                    <!-- Background Image -->
-                    <img src="assets/cat_tablets.jpeg" alt="Tablets" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0" loading="lazy">
-                    <!-- Overlay -->
-                    <div class="absolute inset-0 bg-blue-950/75 group-hover:bg-blue-900/65 transition-colors duration-300 z-10"></div>
-                    <!-- Foreground Content -->
-                    <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
-                            Tablets
-                        </h4>
-                        <span class="inline-block w-8 h-[2px] bg-blue-400 rounded transition-all duration-300 group-hover:w-16"></span>
-                    </div>
-                </a>
-                <a href="products.php?q=capsules"
-                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
-                    <!-- Background Image -->
-                    <img src="assets/cat_capsules.jpeg" alt="Capsules" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0" loading="lazy">
-                    <!-- Overlay -->
-                    <div class="absolute inset-0 bg-emerald-950/75 group-hover:bg-emerald-900/65 transition-colors duration-300 z-10"></div>
-                    <!-- Foreground Content -->
-                    <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
-                            Capsules
-                        </h4>
-                        <span class="inline-block w-8 h-[2px] bg-emerald-400 rounded transition-all duration-300 group-hover:w-16"></span>
-                    </div>
-                </a>
-                <a href="products.php?cat=2"
-                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
-                    <!-- Background Image -->
-                    <img src="assets/cat_syrups.jpeg" alt="Syrups" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0" loading="lazy">
-                    <!-- Overlay -->
-                    <div class="absolute inset-0 bg-blue-950/75 group-hover:bg-blue-900/65 transition-colors duration-300 z-10"></div>
-                    <!-- Foreground Content -->
-                    <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
-                            Syrups
-                        </h4>
-                        <span class="inline-block w-8 h-[2px] bg-blue-400 rounded transition-all duration-300 group-hover:w-16"></span>
-                    </div>
-                </a>
-                <a href="products.php?q=injections"
-                    class="block relative overflow-hidden p-6 sm:p-12 rounded-3xl text-center group hover:-translate-y-2 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
-                    <!-- Background Image -->
-                    <img src="assets/cat_injections.jpeg" alt="Injections" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0" loading="lazy">
-                    <!-- Overlay -->
-                    <div class="absolute inset-0 bg-emerald-950/75 group-hover:bg-emerald-900/65 transition-colors duration-300 z-10"></div>
-                    <!-- Foreground Content -->
-                    <div class="relative z-20 flex flex-col items-center">
-                        <h4 class="text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-wider uppercase mb-3">
-                            Injections
-                        </h4>
-                        <span class="inline-block w-8 h-[2px] bg-emerald-400 rounded transition-all duration-300 group-hover:w-16"></span>
-                    </div>
-                </a>
+            <?php if (!empty($categories)): ?>
+            <!-- Infinite Marquee Scrolling Categories -->
+            <div class="animate-marquee-container relative overflow-hidden w-full select-none mb-16 py-4 flex">
+                <div class="animate-marquee flex gap-8">
+                    <!-- Group 1 -->
+                    <?php foreach ($categories as $idx => $cat): ?>
+                        <?php 
+                        $isEven = ($idx % 2 === 0);
+                        $overlayClass = $isEven ? 'bg-blue-950/75 group-hover:bg-blue-900/65' : 'bg-emerald-950/75 group-hover:bg-emerald-900/65';
+                        $borderClass = $isEven ? 'bg-blue-400' : 'bg-emerald-400';
+                        
+                        // Category Image fallback check
+                        $catImage = 'assets/hero_bg.png';
+                        if (!empty($cat['image'])) {
+                            $catImage = htmlspecialchars($cat['image']);
+                        } else {
+                            $slug = strtolower($cat['slug']);
+                            if (strpos($slug, 'tablet') !== false) {
+                                $catImage = 'assets/cat_tablets.jpeg';
+                            } elseif (strpos($slug, 'capsule') !== false) {
+                                $catImage = 'assets/cat_capsules.jpeg';
+                            } elseif (strpos($slug, 'syrup') !== false || strpos($slug, 'liquid') !== false) {
+                                $catImage = 'assets/cat_syrups.jpeg';
+                            } elseif (strpos($slug, 'inject') !== false || strpos($slug, 'vial') !== false || strpos($slug, 'ampoule') !== false) {
+                                $catImage = 'assets/cat_injections.jpeg';
+                            }
+                        }
+                        ?>
+                        <a href="products.php?cat=<?= $cat['id'] ?>"
+                            class="w-[280px] sm:w-[320px] shrink-0 block relative overflow-hidden p-6 sm:p-10 rounded-3xl text-center group hover:-translate-y-1.5 transition-all duration-300 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
+                            <!-- Background Image -->
+                            <img src="<?= $catImage ?>" alt="<?= htmlspecialchars($cat['name']) ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0" loading="lazy">
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 <?= $overlayClass ?> transition-colors duration-300 z-10"></div>
+                            <!-- Foreground Content -->
+                            <div class="relative z-20 flex flex-col items-center">
+                                <h4 class="text-lg sm:text-2xl font-extrabold text-white tracking-wider uppercase mb-3 whitespace-normal">
+                                    <?= htmlspecialchars($cat['name']) ?>
+                                </h4>
+                                <span class="inline-block w-8 h-[2px] <?= $borderClass ?> rounded transition-all duration-300 group-hover:w-16"></span>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                    
+                    <!-- Group 2 (Duplicate clone for seamless infinite scrolling) -->
+                    <?php foreach ($categories as $idx => $cat): ?>
+                        <?php 
+                        $isEven = ($idx % 2 === 0);
+                        $overlayClass = $isEven ? 'bg-blue-950/75 group-hover:bg-blue-900/65' : 'bg-emerald-950/75 group-hover:bg-emerald-900/65';
+                        $borderClass = $isEven ? 'bg-blue-400' : 'bg-emerald-400';
+                        
+                        // Category Image fallback check
+                        $catImage = 'assets/hero_bg.png';
+                        if (!empty($cat['image'])) {
+                            $catImage = htmlspecialchars($cat['image']);
+                        } else {
+                            $slug = strtolower($cat['slug']);
+                            if (strpos($slug, 'tablet') !== false) {
+                                $catImage = 'assets/cat_tablets.jpeg';
+                            } elseif (strpos($slug, 'capsule') !== false) {
+                                $catImage = 'assets/cat_capsules.jpeg';
+                            } elseif (strpos($slug, 'syrup') !== false || strpos($slug, 'liquid') !== false) {
+                                $catImage = 'assets/cat_syrups.jpeg';
+                            } elseif (strpos($slug, 'inject') !== false || strpos($slug, 'vial') !== false || strpos($slug, 'ampoule') !== false) {
+                                $catImage = 'assets/cat_injections.jpeg';
+                            }
+                        }
+                        ?>
+                        <a href="products.php?cat=<?= $cat['id'] ?>"
+                            class="w-[280px] sm:w-[320px] shrink-0 block relative overflow-hidden p-6 sm:p-10 rounded-3xl text-center group hover:-translate-y-1.5 transition-all duration-300 border border-white/10 shadow-lg min-h-[220px] flex flex-col justify-center items-center">
+                            <!-- Background Image -->
+                            <img src="<?= $catImage ?>" alt="<?= htmlspecialchars($cat['name']) ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 z-0" loading="lazy">
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 <?= $overlayClass ?> transition-colors duration-300 z-10"></div>
+                            <!-- Foreground Content -->
+                            <div class="relative z-20 flex flex-col items-center">
+                                <h4 class="text-lg sm:text-2xl font-extrabold text-white tracking-wider uppercase mb-3 whitespace-normal">
+                                    <?= htmlspecialchars($cat['name']) ?>
+                                </h4>
+                                <span class="inline-block w-8 h-[2px] <?= $borderClass ?> rounded transition-all duration-300 group-hover:w-16"></span>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
             </div>
+            <?php else: ?>
+                <div class="text-center py-10 text-white/50 mb-16">No categories found.</div>
+            <?php endif; ?>
 
             <div
                 class="bg-white/10 backdrop-blur-md border-l-4 border-blue-400 p-6 md:p-8 rounded-r-2xl max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4 md:gap-0 shadow-lg mb-12">
@@ -474,7 +507,7 @@
                         <h3 class="text-4xl font-extrabold text-slate-900 mb-6 italic">Our Vision</h3>
                         <p class="text-slate-600 text-xl leading-relaxed">
                             To be a trusted name in the pharmaceutical industry, delivering excellence in healthcare
-                            solutions worldwide.
+                            solutions across India.
                         </p>
                     </div>
                 </div>
@@ -749,7 +782,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </span>
-                            <span class="font-medium text-sm md:text-base text-slate-600">Nurturing growth in a world-class environment</span>
+                            <span class="font-medium text-sm md:text-base text-slate-600">Nurturing growth in a national-class environment</span>
                         </li>
                         <li class="flex items-start space-x-4 text-slate-700">
                             <span class="w-6 h-6 rounded-full bg-[#008be5] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
@@ -765,7 +798,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </span>
-                            <span class="font-medium text-sm md:text-base text-slate-600">Innovation that impacts global healthcare</span>
+                            <span class="font-medium text-sm md:text-base text-slate-600">Innovation that impacts Indian healthcare</span>
                         </li>
                     </ul>
                     

@@ -1,6 +1,5 @@
 <?php
 header('Content-Type: application/json');
-require_once __DIR__ . '/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -34,15 +33,34 @@ if (!empty($errors)) {
 }
 
 try {
-    $pdo = getPDO();
-    $stmt = $pdo->prepare("
-        INSERT INTO inquiries (name, email, phone, product_name, message, status)
-        VALUES (?, ?, ?, ?, ?, 'New')
-    ");
-    $stmt->execute([$name, $email, $phone, $productName !== '' ? $productName : null, $message]);
+    $enquiriesFile = __DIR__ . '/enquiries.json';
+    
+    // Read existing enquiries
+    $enquiries = [];
+    if (file_exists($enquiriesFile)) {
+        $data = file_get_contents($enquiriesFile);
+        $enquiries = json_decode($data, true) ?: [];
+    }
+    
+    // Append new enquiry
+    $newEnquiry = [
+        'id' => count($enquiries) + 1,
+        'name' => $name,
+        'email' => $email,
+        'phone' => $phone,
+        'product_name' => $productName !== '' ? $productName : null,
+        'message' => $message,
+        'status' => 'New',
+        'created_at' => date('Y-m-d H:i:s')
+    ];
+    $enquiries[] = $newEnquiry;
+    
+    // Save back to file
+    file_put_contents($enquiriesFile, json_encode($enquiries, JSON_PRETTY_PRINT));
 
     echo json_encode(['success' => true, 'message' => 'Enquiry submitted successfully.']);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['success' => false, 'error' => 'Failed to save enquiry. Please try again later.']);
 }
+

@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
-$pdo = getPDO();
+require_once __DIR__ . '/products_data.php';
 
 $slug = trim($_GET['slug'] ?? '');
 if ($slug === '') {
@@ -8,14 +7,27 @@ if ($slug === '') {
     exit;
 }
 
-$stmt = $pdo->prepare("
-    SELECT p.*, c.name AS category_name, c.slug AS category_slug
-    FROM products p
-    LEFT JOIN categories c ON c.id = p.category_id
-    WHERE p.slug = ?
-");
-$stmt->execute([$slug]);
-$product = $stmt->fetch();
+// Find product by slug
+$product = null;
+foreach ($products as $p) {
+    if ($p['slug'] === $slug) {
+        $product = $p;
+        break;
+    }
+}
+
+if ($product) {
+    // Map category name and slug
+    $product['category_name'] = null;
+    $product['category_slug'] = null;
+    foreach ($categories as $cat) {
+        if ($cat['id'] == $product['category_id']) {
+            $product['category_name'] = $cat['name'];
+            $product['category_slug'] = $cat['slug'];
+            break;
+        }
+    }
+}
 
 if (!$product) {
     http_response_code(404);
@@ -44,42 +56,43 @@ if (!$product) {
 $categoryId = $product['category_id'] ? (int)$product['category_id'] : 0;
 $productId = (int)$product['id'];
 
-$relatedProducts = [];
-if ($categoryId > 0) {
-    $relatedStmt = $pdo->prepare("
-        SELECT p.*, c.name AS category_name
-        FROM products p
-        LEFT JOIN categories c ON c.id = p.category_id
-        WHERE p.category_id = ? AND p.id != ?
-        LIMIT 4
-    ");
-    $relatedStmt->execute([$categoryId, $productId]);
-    $relatedProducts = $relatedStmt->fetchAll();
+// Build category map to resolve category_name for related products
+$categoryMap = [];
+foreach ($categories as $cat) {
+    $categoryMap[$cat['id']] = $cat['name'];
 }
 
+$relatedProducts = [];
+if ($categoryId > 0) {
+    foreach ($products as $p) {
+        if ((int)$p['category_id'] === $categoryId && (int)$p['id'] !== $productId) {
+            $rp = $p;
+            $rp['category_name'] = $categoryMap[$rp['category_id']] ?? null;
+            $relatedProducts[] = $rp;
+        }
+    }
+}
+
+// Limit to 4 related products
+$relatedProducts = array_slice($relatedProducts, 0, 4);
+
+// Backfill if fewer than 4 related products are found
 if (count($relatedProducts) < 4) {
     $excludeIds = [$productId];
     foreach ($relatedProducts as $rp) {
         $excludeIds[] = (int)$rp['id'];
     }
-    $placeholders = implode(',', array_fill(0, count($excludeIds), '?'));
-    $backfillLimit = 4 - count($relatedProducts);
     
-    // In case the DB has fewer total products than the backfill limit, check total products count
-    $totalCount = (int)$pdo->query("SELECT COUNT(*) FROM products")->fetchColumn();
-    $actualLimit = min($backfillLimit, max(0, $totalCount - count($excludeIds)));
-    
-    if ($actualLimit > 0) {
-        $backfillStmt = $pdo->prepare("
-            SELECT p.*, c.name AS category_name
-            FROM products p
-            LEFT JOIN categories c ON c.id = p.category_id
-            WHERE p.id NOT IN ($placeholders)
-            LIMIT $actualLimit
-        ");
-        $backfillStmt->execute($excludeIds);
-        $backfillProducts = $backfillStmt->fetchAll();
-        $relatedProducts = array_merge($relatedProducts, $backfillProducts);
+    foreach ($products as $p) {
+        if (!in_array((int)$p['id'], $excludeIds)) {
+            $rp = $p;
+            $rp['category_name'] = $categoryMap[$rp['category_id']] ?? null;
+            $relatedProducts[] = $rp;
+            $excludeIds[] = (int)$rp['id'];
+            if (count($relatedProducts) === 4) {
+                break;
+            }
+        }
     }
 }
 ?>
@@ -125,7 +138,7 @@ if (count($relatedProducts) < 4) {
         <div class="relative z-10 container mx-auto px-6 pt-32 pb-16 flex flex-col items-center">
             <!-- Breadcrumbs -->
             <nav class="flex items-center justify-center space-x-2 text-xs font-semibold text-slate-300 uppercase tracking-widest mb-6">
-                <a href="index.html" class="hover:text-green-400 transition-colors">Home</a>
+                <a href="index.php" class="hover:text-green-400 transition-colors">Home</a>
                 <span class="text-slate-500">/</span>
                 <a href="products.php" class="hover:text-green-400 transition-colors">Products</a>
                 <?php if ($product['category_name']): ?>
@@ -516,59 +529,59 @@ if (count($relatedProducts) < 4) {
                                 <div class="w-16 h-1 bg-blue-600 mx-auto rounded mt-4"></div>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div class="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:grid-cols-4">
                 <?php foreach ($relatedProducts as $idx => $rp): ?>
-                <div class="reveal group bg-white rounded-2xl overflow-hidden hover:shadow-[0_15px_45px_rgba(37,99,235,0.07)] border border-slate-100 hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between h-full" style="transition-delay: <?= ($idx % 4) * 100 ?>ms;">
+                <div class="reveal group bg-white rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-[0_15px_45px_rgba(37,99,235,0.07)] border border-slate-100 hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between h-full" style="transition-delay: <?= ($idx % 4) * 100 ?>ms;">
                     <div>
                         <!-- Image Container with Padding and Light Grey Background -->
-                        <div class="w-full aspect-[4/3] bg-slate-50/50 flex items-center justify-center p-3 relative overflow-hidden border-b border-slate-100/60">
+                        <div class="w-full aspect-square bg-white flex items-center justify-center p-2 relative overflow-hidden border-b border-slate-100">
                             <?php if ($rp['image']): ?>
                             <img src="<?= htmlspecialchars($rp['image']) ?>" alt="<?= htmlspecialchars($rp['name']) ?>"
                                 class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" loading="lazy">
                             <?php else: ?>
-                            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center rounded-xl">
-                                <span style="font-size:3rem;">💊</span>
+                            <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center rounded-lg">
+                                <span class="text-xl sm:text-3xl">💊</span>
                             </div>
                             <?php endif; ?>
                             
                             <?php if ($rp['badge']): ?>
-                            <div class="absolute top-4 right-4 bg-blue-600 text-white text-[9px] font-extrabold px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
+                            <div class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-blue-600 text-white text-[8px] sm:text-[9px] font-extrabold px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded sm:rounded-lg uppercase tracking-wider shadow-sm">
                                 <?= htmlspecialchars($rp['badge']) ?>
                             </div>
                             <?php endif; ?>
                         </div>
 
                         <!-- Card Body -->
-                        <div class="pt-5 px-5 pb-3">
+                        <div class="pt-3 px-3 pb-2 sm:pt-5 sm:px-5 sm:pb-3">
                             <?php if ($rp['category_name']): ?>
-                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1.5 block">
+                            <span class="text-[8px] sm:text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1 block">
                                 <?= htmlspecialchars($rp['category_name']) ?>
                             </span>
                             <?php endif; ?>
                             
-                            <h4 class="text-base font-bold text-slate-800 mb-2.5 group-hover:text-blue-600 transition-colors line-clamp-1">
+                            <h4 class="text-xs sm:text-base font-bold text-slate-800 mb-1.5 sm:mb-2.5 group-hover:text-blue-600 transition-colors line-clamp-1">
                                 <?= htmlspecialchars($rp['name']) ?>
                             </h4>
                             
                             <?php if ($rp['composition']): ?>
                             <div class="space-y-0.5">
-                                <span class="text-[9px] font-semibold text-slate-400 uppercase tracking-widest block">Composition</span>
-                                <p class="text-slate-500 text-xs font-medium leading-relaxed line-clamp-2">
+                                <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 uppercase tracking-widest block">Composition</span>
+                                <p class="text-slate-500 text-[10px] sm:text-xs font-medium leading-relaxed line-clamp-2">
                                     <?= htmlspecialchars(substr($rp['composition'], 0, 75)) . (strlen($rp['composition']) > 75 ? '...' : '') ?>
                                 </p>
                             </div>
                             <?php else: ?>
-                            <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">High-quality pharmaceutical solution.</p>
+                            <p class="text-slate-400 text-[10px] sm:text-xs leading-relaxed line-clamp-2">High-quality pharmaceutical solution.</p>
                             <?php endif; ?>
                         </div>
                     </div>
 
                     <!-- CTA Section -->
-                    <div class="px-5 pb-5 pt-0">
+                    <div class="px-3 pb-3 pt-0 sm:px-5 sm:pb-5">
                         <a href="product.php?slug=<?= urlencode($rp['slug']) ?>"
-                            class="flex items-center gap-2 w-full py-4 px-4 bg-slate-50 group-hover:bg-blue-600 group-hover:text-white border border-slate-100 group-hover:border-blue-600 text-slate-700 font-bold rounded-xl transition-all duration-300 text-xs tracking-wider justify-center uppercase shadow-sm">
+                            class="flex items-center gap-1 sm:gap-2 w-full py-2 px-2 sm:py-3.5 sm:px-4 bg-slate-50 group-hover:bg-blue-600 group-hover:text-white border border-slate-100 group-hover:border-blue-600 text-slate-700 font-bold rounded-lg sm:rounded-xl transition-all duration-300 text-[9px] sm:text-xs tracking-wider justify-center uppercase shadow-sm">
                             <span>View Details</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
                             </svg>
                         </a>

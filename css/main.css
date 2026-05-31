@@ -294,7 +294,7 @@
 
 /* Sticky Footer Support */
 html {
-    background-color: #0f172a;
+    background-color: #f8fafc;
 }
 body {
     min-height: 100vh;
@@ -303,4 +303,18 @@ body {
 }
 #footer-placeholder {
     margin-top: auto;
+}
+
+/* Infinite Category Marquee */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+.animate-marquee-container:hover .animate-marquee {
+    animation-play-state: paused;
 }

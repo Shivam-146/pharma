@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe Test",
+        "email": "john.test@example.com",
+        "phone": "+919999988888",
+        "product_name": "Paracetammol",
+        "message": "This is a test message to verify enquiries.json storage works.",
+        "status": "New",
+        "created_at": "2026-05-31 17:29:13"
+    },
+    {
+        "id": 2,
+        "name": "Shivam Das",
+        "email": "shivamdas123pl@gmail.com",
+        "phone": "8348872742",
+        "product_name": "Oculocef",
+        "message": "I am interested in inquiry details for: Oculocef.",
+        "status": "New",
+        "created_at": "2026-05-31 18:56:18"
+    },
+    {
+        "id": 3,
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+919876543210",
+        "product_name": "Alkadent+",
+        "message": "Interested in Alkadent+ mouthwash.",
+        "status": "New",
+        "created_at": "2026-05-31 18:58:48"
+    }
+]
