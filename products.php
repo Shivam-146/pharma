@@ -105,9 +105,9 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
     <meta name="description" content="MaasCure Pharmaceutical Private Limited is a leading healthcare provider committed to innovation, quality, and healthcare solutions.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?v=1.0.2">
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden min-h-screen flex flex-col">
 
     <!-- Preloader -->
     <div id="preloader">
@@ -124,7 +124,7 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
     <!-- Page Hero -->
     <section class="relative min-h-[60vh] flex items-center justify-center text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="assets/products_hero.png" alt="Our Products Hero" class="w-full h-full object-cover scale-110">
+            <img src="assets/products_hero.png" alt="Our Products Hero" class="w-full h-full object-cover scale-110" fetchpriority="high">
             <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/60 to-slate-900/40"></div>
             <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
         </div>
@@ -304,11 +304,13 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
                     <?php foreach ($products as $idx => $p): ?>
                     <div class="reveal group bg-white rounded-2xl overflow-hidden hover:shadow-[0_15px_45px_rgba(37,99,235,0.07)] border border-slate-100 hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between h-full" style="transition-delay: <?= ($idx % 3) * 100 ?>ms;">
                         <div>
-                            <!-- Image Container with Padding and Light Grey Background -->
-                            <div class="w-full aspect-[4/3] bg-slate-50/50 flex items-center justify-center p-5 relative overflow-hidden border-b border-slate-100/60">
+                            <!-- Image Container with Padding and White Background -->
+                            <div class="w-full h-[400px] bg-white flex items-center justify-center p-2 relative overflow-hidden border-b border-slate-100">
                                 <?php if ($p['image']): ?>
-                                <img src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>"
-                                    class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                                <img src="<?= htmlspecialchars($p['image']) ?>"
+                                     alt="<?= htmlspecialchars($p['name']) ?>"
+                                     class="w-full h-full object-contain transition duration-500 group-hover:scale-105"
+                                     loading="lazy">
                                 <?php else: ?>
                                 <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center rounded-xl">
                                     <span style="font-size:3rem;">💊</span>
@@ -449,7 +451,7 @@ function getPageUrl($pageNum, $catFilter, $search = '', $sort = 'newest') {
     </section>
 
     <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" class="mt-auto w-full"></div>
 
     <script src="js/main.js"></script>
 </body>

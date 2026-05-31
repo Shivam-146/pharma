@@ -6,9 +6,9 @@
     <title>Vision & Mission | MaasCure Pharmaceutical Private Limited</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?v=1.0.2">
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden min-h-screen flex flex-col">
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-brand">
@@ -26,7 +26,7 @@
     <!-- Page Hero -->
     <section class="relative min-h-[60vh] flex items-center justify-center text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="assets/vision_hero.png" alt="Vision & Mission Hero" class="w-full h-full object-cover scale-110">
+            <img src="assets/vision_hero.png" alt="Vision & Mission Hero" class="w-full h-full object-cover scale-110" fetchpriority="high">
             <!-- Multi-layer overlay -->
             <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/60 to-slate-900/40"></div>
             <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
@@ -126,7 +126,7 @@
 
 
     <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" class="mt-auto w-full"></div>
 
     <script src="js/main.js"></script>
 </body>

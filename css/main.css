@@ -291,3 +291,16 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+/* Sticky Footer Support */
+html {
+    background-color: #0f172a;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#footer-placeholder {
+    margin-top: auto;
+}

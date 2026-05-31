@@ -92,14 +92,14 @@ if (count($relatedProducts) < 4) {
     <meta name="description" content="<?= htmlspecialchars(substr($product['composition'] ?? $product['uses'] ?? '', 0, 160)) ?>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?v=1.0.2">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden min-h-screen flex flex-col">
 
     <!-- Preloader -->
     <div id="preloader">
@@ -116,7 +116,7 @@ if (count($relatedProducts) < 4) {
     <!-- Page Hero / Breadcrumbs -->
     <section class="relative min-h-[50vh] flex items-center justify-center text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="assets/products_hero.png" alt="Product Specification Hero" class="w-full h-full object-cover scale-110">
+            <img src="assets/products_hero.png" alt="Product Specification Hero" class="w-full h-full object-cover scale-110" fetchpriority="high">
             <!-- Multi-layer overlay -->
             <div class="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/60 to-slate-900/40"></div>
             <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(37,99,235,0.15) 0%, transparent 70%);"></div>
@@ -216,12 +216,15 @@ if (count($relatedProducts) < 4) {
                         }
                         ?>
 
-                        <div class="relative group rounded-3xl overflow-hidden bg-slate-50 border border-slate-100">
+                        <div class="relative group rounded-3xl overflow-hidden bg-slate-50 border border-slate-100 p-6" id="mainProductImgWrapper">
                             <?php if ($mainImgSrc): ?>
                                 <img id="mainProductImg" 
                                      src="<?= htmlspecialchars($mainImgSrc) ?>" 
                                      alt="<?= htmlspecialchars($product['name']) ?>"
-                                     class="w-full h-[24rem] md:h-[32rem] object-contain transition-all duration-300 p-6 hover:scale-[1.02] cursor-zoom-in">
+                                     class="w-full h-[24rem] md:h-[32rem] object-contain transition-all duration-300 cursor-crosshair">
+                                
+                                <!-- Interactive Zoom Lens -->
+                                <div id="imageZoomLens" class="absolute pointer-events-none border-2 border-white bg-no-repeat shadow-[0_0_15px_rgba(0,0,0,0.15)] rounded-xl opacity-0 transition-opacity duration-200" style="width: 280px; height: 280px; z-index: 20;"></div>
                             <?php else: ?>
                                 <div id="mainProductImgPlaceholder" class="w-full h-[24rem] md:h-[32rem] flex items-center justify-center bg-gradient-to-br from-blue-50 to-teal-50">
                                     <span style="font-size:8rem;">💊</span>
@@ -229,7 +232,7 @@ if (count($relatedProducts) < 4) {
                             <?php endif; ?>
                             
                             <?php if ($product['badge']): ?>
-                                <div class="absolute top-6 right-6 bg-blue-600 text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-lg">
+                                <div class="absolute top-6 right-6 bg-blue-600 text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-lg z-30">
                                     <?= htmlspecialchars($product['badge']) ?>
                                 </div>
                             <?php endif; ?>
@@ -241,7 +244,7 @@ if (count($relatedProducts) < 4) {
                                 <?php foreach ($galleryImages as $idx => $imgUrl): ?>
                                     <button onclick="changeMainImg('<?= htmlspecialchars($imgUrl) ?>', this)" 
                                             class="gallery-thumb-btn w-20 h-20 rounded-2xl overflow-hidden border-2 <?= ($imgUrl === $mainImgSrc) ? 'border-blue-600 shadow-md' : 'border-slate-100 hover:border-slate-300' ?> bg-slate-50 transition-all duration-300 focus:outline-none">
-                                        <img src="<?= htmlspecialchars($imgUrl) ?>" class="w-full h-full object-cover">
+                                        <img src="<?= htmlspecialchars($imgUrl) ?>" class="w-full h-full object-cover" loading="lazy">
                                     </button>
                                 <?php endforeach; ?>
                             </div>
@@ -331,26 +334,32 @@ if (count($relatedProducts) < 4) {
                 <!-- Left Column: Specs Tabs (7 Columns) -->
                 <div class="lg:col-span-7 space-y-8">
                     <div class="bg-white rounded-3xl md:rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-6 sm:p-8 md:p-10">
-                        <div class="flex border-b border-slate-100 mb-8 overflow-x-auto" id="productTabs" role="tablist">
+                        <div class="flex border-b border-slate-100 mb-8 overflow-x-auto scrollbar-none" id="productTabs" role="tablist">
                             <!-- Tab 1: Overview -->
-                            <button class="tab-btn active py-4 px-6 font-bold text-xs uppercase tracking-wider text-blue-600 border-b-2 border-blue-600 transition-all focus:outline-none flex items-center gap-2 whitespace-nowrap" 
+                            <button class="tab-btn active py-3 sm:py-4 px-3 sm:px-6 font-bold text-[10px] sm:text-xs uppercase tracking-wider text-blue-600 border-b-2 border-blue-600 transition-all focus:outline-none flex items-center gap-1 sm:gap-2 whitespace-nowrap shrink-0" 
                                     onclick="switchTab(event, 'tab-indication')">
-                                <span>💊</span> Specifications & Composition
+                                <span>💊</span>
+                                <span class="hidden sm:inline">Specifications & Composition</span>
+                                <span class="sm:hidden">Specs</span>
                             </button>
                             
                             <!-- Tab 2: Dosage & Storage -->
                             <?php if ($product['dosage'] || $product['storage']): ?>
-                            <button class="tab-btn py-4 px-6 font-bold text-xs uppercase tracking-wider text-slate-400 hover:text-slate-600 border-b-2 border-transparent hover:border-slate-200 transition-all focus:outline-none flex items-center gap-2 whitespace-nowrap" 
+                            <button class="tab-btn py-3 sm:py-4 px-3 sm:px-6 font-bold text-[10px] sm:text-xs uppercase tracking-wider text-slate-400 hover:text-slate-600 border-b-2 border-transparent hover:border-slate-200 transition-all focus:outline-none flex items-center gap-1 sm:gap-2 whitespace-nowrap shrink-0" 
                                     onclick="switchTab(event, 'tab-admin')">
-                                <span>⏱️</span> Dosage & Storage
+                                <span>⏱️</span>
+                                <span class="hidden sm:inline">Dosage & Storage</span>
+                                <span class="sm:hidden">Dosage</span>
                             </button>
                             <?php endif; ?>
                             
                             <!-- Tab 3: Safety & Origin -->
                             <?php if ($product['safety_information'] || $product['manufacturer_details']): ?>
-                            <button class="tab-btn py-4 px-6 font-bold text-xs uppercase tracking-wider text-slate-400 hover:text-slate-600 border-b-2 border-transparent hover:border-slate-200 transition-all focus:outline-none flex items-center gap-2 whitespace-nowrap" 
+                            <button class="tab-btn py-3 sm:py-4 px-3 sm:px-6 font-bold text-[10px] sm:text-xs uppercase tracking-wider text-slate-400 hover:text-slate-600 border-b-2 border-transparent hover:border-slate-200 transition-all focus:outline-none flex items-center gap-1 sm:gap-2 whitespace-nowrap shrink-0" 
                                     onclick="switchTab(event, 'tab-safety')">
-                                <span>⚠️</span> Safety & Origin
+                                <span>⚠️</span>
+                                <span class="hidden sm:inline">Safety & Origin</span>
+                                <span class="sm:hidden">Safety</span>
                             </button>
                             <?php endif; ?>
                         </div>
@@ -504,7 +513,7 @@ if (count($relatedProducts) < 4) {
             <div class="text-center mb-12">
                 <h3 class="text-teal-500 font-black tracking-widest uppercase text-xs mb-3">Therapeutic Alternatives</h3>
                 <h2 class="text-3xl md:text-5xl font-black text-slate-800 italic">Related <span class="text-blue-600">Products</span></h2>
-                <div class="w-16 h-1 bg-blue-600 mx-auto rounded mt-4"></div>
+                                <div class="w-16 h-1 bg-blue-600 mx-auto rounded mt-4"></div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -512,10 +521,10 @@ if (count($relatedProducts) < 4) {
                 <div class="reveal group bg-white rounded-2xl overflow-hidden hover:shadow-[0_15px_45px_rgba(37,99,235,0.07)] border border-slate-100 hover:border-blue-100 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between h-full" style="transition-delay: <?= ($idx % 4) * 100 ?>ms;">
                     <div>
                         <!-- Image Container with Padding and Light Grey Background -->
-                        <div class="w-full aspect-[4/3] bg-slate-50/50 flex items-center justify-center p-5 relative overflow-hidden border-b border-slate-100/60">
+                        <div class="w-full aspect-[4/3] bg-slate-50/50 flex items-center justify-center p-3 relative overflow-hidden border-b border-slate-100/60">
                             <?php if ($rp['image']): ?>
                             <img src="<?= htmlspecialchars($rp['image']) ?>" alt="<?= htmlspecialchars($rp['name']) ?>"
-                                class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                                class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" loading="lazy">
                             <?php else: ?>
                             <div class="w-full h-full bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center rounded-xl">
                                 <span style="font-size:3rem;">💊</span>
@@ -573,7 +582,7 @@ if (count($relatedProducts) < 4) {
 
 
         <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder" class="mt-auto w-full"></div>
 
     <script src="js/main.js"></script>
     <script>
@@ -582,9 +591,19 @@ if (count($relatedProducts) < 4) {
             const mainImg = document.getElementById('mainProductImg');
             if (mainImg) {
                 mainImg.style.opacity = '0';
+                
+                // Hide zoom lens on transition
+                const lens = document.getElementById('imageZoomLens');
+                if (lens) {
+                    lens.classList.remove('opacity-100');
+                }
+
                 setTimeout(() => {
                     mainImg.src = src;
                     mainImg.style.opacity = '1';
+                    if (lens) {
+                        lens.style.backgroundImage = `url('${src}')`;
+                    }
                 }, 150);
             }
             
@@ -594,6 +613,121 @@ if (count($relatedProducts) < 4) {
             });
             btn.classList.remove('border-slate-100');
             btn.classList.add('border-blue-600', 'shadow-md');
+        }
+
+        // Zoom setup function
+        function initImageZoom() {
+            const wrapper = document.getElementById('mainProductImgWrapper');
+            const img = document.getElementById('mainProductImg');
+            const lens = document.getElementById('imageZoomLens');
+
+            if (!wrapper || !img || !lens) return;
+
+            const zoomFactor = 2.5;
+
+            function updateLensBackground() {
+                lens.style.backgroundImage = `url('${img.src}')`;
+            }
+
+            wrapper.addEventListener('mouseenter', () => {
+                updateLensBackground();
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                lens.classList.remove('opacity-100');
+            });
+
+            wrapper.addEventListener('mousemove', (e) => {
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const imgRect = img.getBoundingClientRect();
+
+                const displayWidth = imgRect.width;
+                const displayHeight = imgRect.height;
+                const naturalWidth = img.naturalWidth;
+                const naturalHeight = img.naturalHeight;
+
+                // Ensure image natural dimensions are loaded
+                if (!naturalWidth || !naturalHeight) {
+                    lens.classList.remove('opacity-100');
+                    return;
+                }
+
+                // Calculate scale of object-contain image content
+                const scale = Math.min(displayWidth / naturalWidth, displayHeight / naturalHeight);
+                const renderedWidth = naturalWidth * scale;
+                const renderedHeight = naturalHeight * scale;
+
+                // Relative position of the centered image content inside the display box
+                const imgLeft = imgRect.left - wrapperRect.left;
+                const imgTop = imgRect.top - wrapperRect.top;
+
+                const renderedLeft = imgLeft + (displayWidth - renderedWidth) / 2;
+                const renderedTop = imgTop + (displayHeight - renderedHeight) / 2;
+
+                // Cursor position relative to wrapper
+                const x = e.clientX - wrapperRect.left;
+                const y = e.clientY - wrapperRect.top;
+
+                // Boundary verification: is the cursor inside the actual image artwork?
+                const isInside = (x >= renderedLeft && x <= renderedLeft + renderedWidth &&
+                                  y >= renderedTop && y <= renderedTop + renderedHeight);
+
+                if (!isInside) {
+                    lens.classList.remove('opacity-100');
+                    return;
+                }
+
+                // If image size is smaller than the lens, don't show the zoom
+                const lensWidth = lens.offsetWidth || 180;
+                const lensHeight = lens.offsetHeight || 180;
+
+                if (renderedWidth < lensWidth || renderedHeight < lensHeight) {
+                    lens.classList.remove('opacity-100');
+                    return;
+                }
+
+                // Show lens and set background size
+                if (!lens.classList.contains('opacity-100')) {
+                    lens.classList.add('opacity-100');
+                    lens.style.backgroundSize = `${renderedWidth * zoomFactor}px ${renderedHeight * zoomFactor}px`;
+                }
+
+                // Calculate lens position, centered on the cursor, clamped to the rendered image bounds
+                let lensX = x - lensWidth / 2;
+                let lensY = y - lensHeight / 2;
+
+                const minX = renderedLeft;
+                const maxX = renderedLeft + renderedWidth - lensWidth;
+                const minY = renderedTop;
+                const maxY = renderedTop + renderedHeight - lensHeight;
+
+                if (lensX < minX) lensX = minX;
+                if (lensX > maxX) lensX = maxX;
+                if (lensY < minY) lensY = minY;
+                if (lensY > maxY) lensY = maxY;
+
+                lens.style.left = `${lensX}px`;
+                lens.style.top = `${lensY}px`;
+
+                // Calculate background position relative to the lens
+                const rx = x - renderedLeft;
+                const ry = y - renderedTop;
+
+                let bgX = -(rx * zoomFactor - lensWidth / 2);
+                let bgY = -(ry * zoomFactor - lensHeight / 2);
+
+                const maxBgX = 0;
+                const minBgX = -(renderedWidth * zoomFactor - lensWidth);
+                const maxBgY = 0;
+                const minBgY = -(renderedHeight * zoomFactor - lensHeight);
+
+                if (bgX > maxBgX) bgX = maxBgX;
+                if (bgX < minBgX) bgX = minBgX;
+                if (bgY > maxBgY) bgY = maxBgY;
+                if (bgY < minBgY) bgY = minBgY;
+
+                lens.style.backgroundPosition = `${bgX}px ${bgY}px`;
+            });
         }
 
         // Tabs switcher function
@@ -613,6 +747,8 @@ if (count($relatedProducts) < 4) {
 
         // Quick inquiry form handle
         document.addEventListener('DOMContentLoaded', () => {
+            initImageZoom();
+
             const quickForm = document.getElementById('quick-inquiry-form');
             const quickSuccess = document.getElementById('quick-success-msg');
             if (quickForm) {
